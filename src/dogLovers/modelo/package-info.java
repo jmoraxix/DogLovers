@@ -1,0 +1,22 @@
+/**
+ * Proyecto Final POO
+ * Jose David Mora Loria
+ * 2014004856
+ * Diego Delgado Cerdas
+ * 2013099268
+ * David Diaz
+ * 2014004725
+ * Roger Villalobos
+ * 2014079369
+ * Oct 25, 2014
+ */
+
+/**
+ * @author JoséDavid Oct 25, 2014
+ */
+package dogLovers.modelo;
+
+/*
+ * Contenido del paquete: Declaración de las clases de la aplicación, modelado
+ * de los objetos.
+ */
