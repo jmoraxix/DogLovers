@@ -1,3 +1,7 @@
-/bin
-
+bin/
 .settings
+src/dogLovers/vista/imagenes/Thumbs.db
+Documentación/Diagramas/Diagrama de Casos de Uso/Thumbs.db
+Documentación/Diagramas/Diagrama de Clases/Thumbs.db
+Documentación/Diagramas/Diagrama de Estados/Thumbs.db
+Documentación/Diagramas/Diagrama de Paquetes/Thumbs.db
