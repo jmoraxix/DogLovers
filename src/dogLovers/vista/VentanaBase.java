@@ -17,7 +17,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import dogLovers.DogLovers;
 
@@ -32,7 +31,7 @@ public class VentanaBase extends JFrame {
 	public VentanaBase() {
 		// Declaracion básica de la venta
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setSize(ancho_lateral + ancho_principal, alto);
+		setSize(1024, 720);
 		setTitle("ALEJANDRIAX");
 		Image icon = Toolkit
 				.getDefaultToolkit()
@@ -43,10 +42,5 @@ public class VentanaBase extends JFrame {
 
 		// Se declara la barra de menú
 		this.setJMenuBar(new BarraMenu());
-
-		// Inicializar ventana y paneles
-		// Panel con el contenido principal
-		JPanel contenido = new JPanel();
-		this.setContentPane(contenido);
 	}
 }
