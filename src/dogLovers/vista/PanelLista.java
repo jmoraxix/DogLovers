@@ -13,29 +13,61 @@
 
 package dogLovers.vista;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 /**
- * @author JoséDavid 01/11/2014
+ * @author Josï¿½David 01/11/2014
  */
 public class PanelLista extends PanelConFondo {
 
 	private static final long serialVersionUID = 5718919475108456796L;
 
+	/****VARIABLES****/
 	ArrayList<JPanel> itemes = new ArrayList<JPanel>();
+	JPanel panel;
+	GridBagConstraints valoresGrid;
 
+	/****CONSTRUCTOR****/
+	public PanelLista() {
+		super("fondo_lista.png");
+		inicializarPanel();
+	}
 	public PanelLista(ArrayList<JPanel> itemes) {
 		super("fondo_lista.png");
-		this.itemes = itemes;
+		
+		inicializarPanel();
+		
+		if(!itemes.isEmpty())
+			for(JPanel item : itemes)
+				addRow(item);
+	}
+	
+	/****MÃ‰TODOS****/
+	private void inicializarPanel(){
+		setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane
-				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(0, 0, this.getWidth(), this.getHeight());
-		add(scrollPane);
+		scrollPane.setLayout(new BorderLayout(0, 0));
+		scrollPane.setOpaque(false);
+		add(scrollPane, BorderLayout.CENTER);
+
+		panel = new JPanel(new GridBagLayout());
+		panel.setOpaque(false);
+		scrollPane.add(panel, BorderLayout.CENTER);
+		GridBagConstraints valoresGrid = new GridBagConstraints();
+		valoresGrid.fill = GridBagConstraints.BOTH;
+		valoresGrid.weightx = 0.5;
+		valoresGrid.weighty = 1;
+	}
+	
+	public void addRow(JPanel row){
+		this.itemes.add(row);
+		panel.add(row, valoresGrid);
 	}
 }
