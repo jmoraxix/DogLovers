@@ -22,10 +22,21 @@ public abstract class Entidad  {
 	protected String numTelefono;
 	protected String correo;
 	protected Calificacion calificacion;
-	protected boolean listaNegra =false;
+	protected boolean listaNegra = false;
 	protected String ubicacion;
 	
 	
+	
+	
+	/**
+	 * @param identificacion
+	 * @param nombre
+	 */
+	public Entidad(String identificacion, String nombre) {
+		super();
+		this.identificacion = identificacion;
+		this.nombre = nombre;
+	}
 	/****GETTERS AND SETTERS****/
 	public String getNombre() {
 		return nombre;
@@ -49,19 +60,20 @@ public abstract class Entidad  {
 		return calificacion;
 	}
 	public void addCalificacion(int calificacion){
+		this.calificacion.addCalificacion(calificacion);
 		
 		} 
 	public void addCalificacion (int calificacion, String nota ){
+		this.calificacion.addCalificacion(calificacion);
+		this.calificacion.addNotas(nota);
 		
 	}
 	public void agregarListaNegra(){
+		this.listaNegra = true;
 		
 	}
 	public void quitarListaNegra(){
-		
-	}
-	public void setListaNegra(boolean listaNegra) {
-		this.listaNegra = listaNegra;
+		this.listaNegra = false;
 	}
 	public String getUbicacion() {
 		return ubicacion;

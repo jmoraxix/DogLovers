@@ -13,6 +13,10 @@ package dogLovers.modelo;
 
 import java.util.ArrayList;
 
+import javax.swing.text.MaskFormatter;
+
+import dogLovers.control.Principal;
+
 /**
  * @author xDiegoxD 03/11/2014
  *
@@ -22,6 +26,7 @@ public class CasaCuna {
 	private Persona personaResponsable;
 	private boolean requiereAlimento;
 	private ArrayList<String> caracteristicasMascota = new ArrayList<String>();
+	private ArrayList<String> mascota =  new ArrayList<String>();
 	
 	
 	/****CONSTRUCTOR****/
@@ -40,7 +45,13 @@ public class CasaCuna {
 		return personaResponsable;
 	}
 
-
+	public ArrayList<String> getCaracteristicasMascota() {
+		return caracteristicasMascota;
+	}
+//	
+//	public void addMascota(Mascota mascota){
+//		Principal.addMascota(mascota);
+//	}
 	public void setPersonaResponsable(Persona personaResponsable) {
 		this.personaResponsable = personaResponsable;
 	}
@@ -56,9 +67,6 @@ public class CasaCuna {
 	}
 
 
-	public ArrayList<String> getCaracteristicasMascota() {
-		return caracteristicasMascota;
-	}
 
 
 	public void setCaracteristicasMascota(ArrayList<String> caracteristicasMascota) {

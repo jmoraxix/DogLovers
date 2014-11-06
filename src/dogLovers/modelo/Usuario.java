@@ -42,5 +42,13 @@ public class Usuario {
 	public boolean validarUsuario(String usuario, String contrasena){
 		return this.usuario == usuario && this.contrasena == contrasena;
 	}
+
+	public Persona getDatos() {
+		return datos;
+	}
+
+	public void setDatos(Persona datos) {
+		this.datos = datos;
+	}
 	
 	}

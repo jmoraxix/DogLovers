@@ -19,7 +19,41 @@ import java.util.ArrayList;
  * 
  */
 public class Asociacion {
-	private ArrayList<Persona> asociados =  new ArrayList<>();
+	private ArrayList<Persona> asociados =  new ArrayList<Persona>();
+	private ArrayList<Double> donaciones = new ArrayList<Double>();
+	
+	
+
+	
+	public ArrayList<Persona> getAsociados() {
+		return asociados;
+	}
+	
+	public void addAsociado(Persona asociado){
+		this.asociados.add(asociado);	
+	}
+	
+	public void removeAsociado(Persona asociado){
+		this.asociados.remove(asociado);
+	}
+	
+	public double getTotalDonaciones(){
+		double total = 0;
+		for (double donacion : donaciones) {
+			total += donacion;
+		}
+		return total;
+	}
+	
+	public ArrayList<Double> getDonaciones() {
+		return donaciones;
+	}
+	
+	public void addDonacion(double donacion){
+		this.donaciones.add(donacion);
+	}
 
 
+	
+	
 }
