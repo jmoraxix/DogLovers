@@ -37,7 +37,7 @@ public class itemCasaCuna extends PanelConFondo {
 		gridBagLayout.columnWidths = new int[] { getWidth() / 3,
 				getWidth() / 3, getWidth() / 3 };
 		gridBagLayout.rowHeights = new int[] { 0 };
-		gridBagLayout.columnWeights = new double[] { 0.7, 0.7, 0.0 };
+		gridBagLayout.columnWeights = new double[] { 1.0, 0.7, 0.0 };
 		gridBagLayout.rowWeights = new double[] { 1.0 };
 		setLayout(gridBagLayout);
 

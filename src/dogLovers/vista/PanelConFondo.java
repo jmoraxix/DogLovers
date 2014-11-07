@@ -38,34 +38,14 @@ public class PanelConFondo extends JPanel {
 	// Recibe un string con la URL de la imagen
 	public PanelConFondo(String urlImagen) {
 		setForeground(SystemColor.controlHighlight);
-
-		try {
-			URL imagen = DogLovers.class.getResource("vista/imagenes/"
-					+ urlImagen);
-			BufferedImage img = ImageIO.read(imagen);
-			BgBorder borde = new BgBorder(img);
-			setBorder(borde);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		definirBorde(urlImagen);
 		setLayout(null);
 	}
 
 	// Recibe un string con la URL de la imagen y si el panel es opaco o no
 	public PanelConFondo(String urlImagen, boolean isOpaque) {
 		setForeground(SystemColor.controlHighlight);
-
-		try {
-			URL imagen = DogLovers.class.getResource("vista/imagenes/"
-					+ urlImagen);
-			BufferedImage img = ImageIO.read(imagen);
-			BgBorder borde = new BgBorder(img);
-			setBorder(borde);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		definirBorde(urlImagen);
 		setOpaque(isOpaque);
 	}
 
@@ -74,17 +54,6 @@ public class PanelConFondo extends JPanel {
 	// botón con el título ingresado
 	public PanelConFondo(String urlImagen, boolean isOpaque, String titulo) {
 		setForeground(SystemColor.controlHighlight);
-
-		try {
-			URL imagen = DogLovers.class.getResource("vista/imagenes/"
-					+ urlImagen);
-			BufferedImage img = ImageIO.read(imagen);
-			BgBorder borde = new BgBorder(img);
-			setBorder(borde);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 		setOpaque(isOpaque);
 		setLayout(new BorderLayout(0, 0));
 
@@ -98,6 +67,17 @@ public class PanelConFondo extends JPanel {
 
 	public JButton getBtn() {
 		return btn;
+	}
+
+	public void definirBorde(String url) {
+		try {
+			URL imagen = DogLovers.class.getResource("vista/imagenes/" + url);
+			BufferedImage img = ImageIO.read(imagen);
+			BgBorder borde = new BgBorder(img);
+			this.setBorder(borde);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
