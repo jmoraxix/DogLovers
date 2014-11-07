@@ -32,7 +32,7 @@ public class Principal {
 	private final static Font letraTexto3 = new Font("Georgia", Font.PLAIN, 16);
 
 	private static String SESION_USUARIO;
-	private static int ancho = 1000, alto = 600;
+	private static int ancho = 1200, alto = 600;
 
 	/**** DECLARACIï¿½N DE CONTROLADORES ****/
 	// Declaración clase coordinador
