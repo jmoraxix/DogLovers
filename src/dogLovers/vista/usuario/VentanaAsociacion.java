@@ -12,6 +12,8 @@
  */
 package dogLovers.vista.usuario;
 
+import java.awt.GridBagLayout;
+
 import javax.swing.JFrame;
 
 import dogLovers.control.Principal;
@@ -30,6 +32,12 @@ public class VentanaAsociacion extends JFrame {
 
 		panelPrincipal = new PanelBase();
 		setContentPane(panelPrincipal);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] { 0 };
+		gridBagLayout.rowHeights = new int[] { 0 };
+		gridBagLayout.columnWeights = new double[] { Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { Double.MIN_VALUE };
+		panelPrincipal.setLayout(gridBagLayout);
 		inicializarPanel();
 	}
 
