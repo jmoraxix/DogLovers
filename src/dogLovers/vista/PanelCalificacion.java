@@ -36,12 +36,11 @@ public class PanelCalificacion extends JPanel {
 		ImageProducer ip = defaultIcon.getImage().getSource();
 
 		ImageIcon yStar = makeStarImageIcon(ip, new float[] { 1.0f, 1.0f, .0f });
-		List<ImageIcon> list = Arrays.asList(yStar, yStar, yStar, yStar, yStar,
-				yStar, yStar, yStar, yStar, yStar);
+		List<ImageIcon> list = Arrays.asList(yStar, yStar, yStar, yStar, yStar);
 		setLayout(new BorderLayout(0, 0));
 		levelBar = new LevelBar(defaultIcon, list, 1, entidad);
 		add(levelBar);
-		setPreferredSize(new Dimension(200, 45));
+		setPreferredSize(new Dimension(100, 45));
 		setOpaque(false);
 	}
 
@@ -67,17 +66,16 @@ class LevelBar extends JPanel implements MouseListener, MouseMotionListener {
 	private final int gap;
 	protected final List<ImageIcon> iconList;
 	protected final List<JLabel> labelList = Arrays.asList(new JLabel(),
-			new JLabel(), new JLabel(), new JLabel(), new JLabel(),
-			new JLabel(), new JLabel(), new JLabel(), new JLabel(),
-			new JLabel());
+			new JLabel(), new JLabel(), new JLabel(), new JLabel());
 	protected final ImageIcon defaultIcon;
 	private int clicked = -1;
 	private Entidad entidad;
+	private boolean calificado = false;
 
 	/**** CONSTRUCTOR ****/
 	public LevelBar(ImageIcon defaultIcon, List<ImageIcon> list, int gap,
 			Entidad entidad) {
-		super(new GridLayout(1, 10, gap * 2, gap * 2));
+		super(new GridLayout(1, 5, gap * 2, gap * 2));
 		this.entidad = entidad;
 		this.defaultIcon = defaultIcon;
 		this.iconList = list;
@@ -102,8 +100,11 @@ class LevelBar extends JPanel implements MouseListener, MouseMotionListener {
 	}
 
 	public void setLevel(int l) {
-		clicked = l;
-		repaintIcon(clicked);
+		if (!calificado) {
+			clicked = l;
+			repaintIcon(clicked);
+			calificado = true;
+		}
 	}
 
 	private int getSelectedIconIndex(Point p) {
@@ -137,8 +138,11 @@ class LevelBar extends JPanel implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		clicked = getSelectedIconIndex(e.getPoint());
-		entidad.addCalificacion(clicked);
+		if (!calificado) {
+			clicked = getSelectedIconIndex(e.getPoint());
+			entidad.addCalificacion(clicked);
+			calificado = true;
+		}
 	}
 
 	@Override
@@ -167,7 +171,6 @@ class SelectedImageFilter extends RGBImageFilter {
 	/**** CONSTRUCTOR ****/
 	public SelectedImageFilter(float[] arrays) {
 		super();
-		// filter = arrays;
 		filter = new float[arrays.length];
 		for (int i = 0; i < arrays.length; i++) {
 			filter[i] = arrays[i];

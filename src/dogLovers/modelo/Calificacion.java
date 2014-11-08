@@ -1,5 +1,5 @@
 /** 
-* Proyecto Final POO
+ * Proyecto Final POO
  * Jose David Mora Loria
  * 2014004856
  * Diego Delgado Cerdas
@@ -15,30 +15,29 @@ import java.util.ArrayList;
 
 /**
  * @author xDiegoxD 01/11/2014
- *
  * 
  */
 public class Calificacion {
 	private int calificacion;
 	private ArrayList<String> notas = new ArrayList<String>();
-	
-	/****CONSTRUCTOR****/
+
+	/**** CONSTRUCTOR ****/
 	public Calificacion(int calificacion) {
 		this.calificacion = calificacion;
-	
 	}
-	public Calificacion(int calificacion, String nota){
-	this.calificacion = calificacion;
-	this.notas = notas;
-	
+
+	public Calificacion(int calificacion, String nota) {
+		this.calificacion = calificacion;
+		this.notas.add(nota);
 	}
-	
-	/****GETTERS AND SETTERS****/
+
+	/**** GETTERS AND SETTERS ****/
 	public int getCalificacion() {
 		return calificacion;
 	}
+
 	public void addCalificacion(int calificacion) {
-		this.calificacion = calificacion;
+		this.calificacion = this.calificacion + calificacion / 2;
 	}
 
 	public ArrayList<String> getNotas() {
@@ -48,10 +47,9 @@ public class Calificacion {
 	public void addNotas(String nota) {
 		this.notas.add(nota);
 	}
-	
-	public void removeNota (String nota){
+
+	public void removeNota(String nota) {
 		this.notas.remove(nota);
 	}
-	
-	
+
 }
