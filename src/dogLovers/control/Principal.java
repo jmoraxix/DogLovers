@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import dogLovers.control.exeptions.NonExistentUserException;
 import dogLovers.modelo.Asociacion;
 import dogLovers.modelo.CasaCuna;
 import dogLovers.modelo.Logica;
@@ -46,14 +47,14 @@ public class Principal {
 	private static ArrayList<Persona> personas = new ArrayList<Persona>();
 	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-	/**** DECLARACIï¿½N DE CONTROLADORES ****/
+	/**** DECLARACIÓN DE CONTROLADORES ****/
 	// Declaración clase coordinador
 	private static Coordinador coordinador;
 
 	// Declaración clase lógica
 	private static Logica logica;
 
-	/**** DECLARACIï¿½N DE PANTALLAS ****/
+	/**** DECLARACIÓN DE PANTALLAS ****/
 
 	public static void main(String[] args) {
 		System.gc();
@@ -70,6 +71,7 @@ public class Principal {
 		// GenerarDatos.generarDatos();
 	}
 
+	/**** MÉTODOS ****/
 	/**
 	 * Método creado para declarar todas la ventanas y establecer relaciones con
 	 * el coordinador
@@ -94,6 +96,19 @@ public class Principal {
 		coordinador.setLogica(logica);
 
 		// coordinador.mostrarVentanaPrincipal();
+	}
+
+	public static Usuario verificarSesion(String usr, String pass)
+			throws NonExistentUserException {
+		Usuario user = null;
+		for (Usuario usuario : usuarios) {
+			user = usuario.validarUsuario(usr, pass) ? usuario : null;
+		}
+
+		if (user.equals(null))
+			throw new NonExistentUserException(usr);
+
+		return user;
 	}
 
 	/**** GETTERS AND SETTERS ****/
