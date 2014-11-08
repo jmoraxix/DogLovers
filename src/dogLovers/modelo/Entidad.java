@@ -1,5 +1,5 @@
 /** 
-* Proyecto Final POO
+ * Proyecto Final POO
  * Jose David Mora Loria
  * 2014004856
  * Diego Delgado Cerdas
@@ -13,10 +13,9 @@ package dogLovers.modelo;
 
 /**
  * @author xDiegoxD 03/11/2014
- *
  * 
  */
-public abstract class Entidad  {
+public abstract class Entidad {
 	protected String identificacion;
 	protected String nombre;
 	protected String numTelefono;
@@ -24,10 +23,7 @@ public abstract class Entidad  {
 	protected Calificacion calificacion;
 	protected boolean listaNegra = false;
 	protected String ubicacion;
-	
-	
-	
-	
+
 	/**
 	 * @param identificacion
 	 * @param nombre
@@ -37,52 +33,59 @@ public abstract class Entidad  {
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 	}
-	/****GETTERS AND SETTERS****/
+
+	/**** GETTERS AND SETTERS ****/
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getNumTelefono() {
 		return numTelefono;
 	}
+
 	public void setNumTelefono(String numTelefono) {
 		this.numTelefono = numTelefono;
 	}
+
 	public String getCorreo() {
 		return correo;
 	}
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public Calificacion getCalificacion() {
-		return calificacion;
+
+	public int getCalificacion() {
+		return calificacion.getCalificacion();
 	}
-	public void addCalificacion(int calificacion){
+
+	public void addCalificacion(int calificacion) {
 		this.calificacion.addCalificacion(calificacion);
-		
-		} 
-	public void addCalificacion (int calificacion, String nota ){
+	}
+
+	public void addCalificacion(int calificacion, String nota) {
 		this.calificacion.addCalificacion(calificacion);
 		this.calificacion.addNotas(nota);
-		
 	}
-	public void agregarListaNegra(){
+
+	public void agregarListaNegra() {
 		this.listaNegra = true;
-		
 	}
-	public void quitarListaNegra(){
+
+	public void quitarListaNegra() {
 		this.listaNegra = false;
 	}
+
 	public String getUbicacion() {
 		return ubicacion;
 	}
+
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	
-	
-	
-	
+
 }
