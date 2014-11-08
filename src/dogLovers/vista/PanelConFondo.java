@@ -54,6 +54,7 @@ public class PanelConFondo extends JPanel {
 	// botón con el título ingresado
 	public PanelConFondo(String urlImagen, boolean isOpaque, String titulo) {
 		setForeground(SystemColor.controlHighlight);
+		definirBorde(urlImagen);
 		setOpaque(isOpaque);
 		setLayout(new BorderLayout(0, 0));
 
@@ -62,7 +63,7 @@ public class PanelConFondo extends JPanel {
 		btn.setContentAreaFilled(false);
 		btn.setBorderPainted(false);
 		btn.setFont(Principal.getLetratexto2());
-		add(btn, BorderLayout.CENTER);
+		add(btn, BorderLayout.SOUTH);
 	}
 
 	public JButton getBtn() {
