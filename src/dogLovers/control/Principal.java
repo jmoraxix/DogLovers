@@ -14,11 +14,17 @@
 package dogLovers.control;
 
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import dogLovers.modelo.Asociacion;
+import dogLovers.modelo.CasaCuna;
 import dogLovers.modelo.Logica;
+import dogLovers.modelo.Mascota;
+import dogLovers.modelo.Persona;
+import dogLovers.modelo.Usuario;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -33,6 +39,12 @@ public class Principal {
 
 	private static String SESION_USUARIO;
 	private static int ancho = 1200, alto = 600;
+
+	private static ArrayList<Asociacion> asociaciones = new ArrayList<Asociacion>();
+	private static ArrayList<CasaCuna> casasCuna = new ArrayList<CasaCuna>();
+	private static ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+	private static ArrayList<Persona> personas = new ArrayList<Persona>();
+	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
 	/**** DECLARACIï¿½N DE CONTROLADORES ****/
 	// Declaración clase coordinador
@@ -55,6 +67,7 @@ public class Principal {
 		}
 
 		inicializarVentanas();
+		// GenerarDatos.generarDatos();
 	}
 
 	/**
@@ -130,5 +143,65 @@ public class Principal {
 
 	public static int getAlto() {
 		return alto;
+	}
+
+	public static ArrayList<Asociacion> getAsociaciones() {
+		return asociaciones;
+	}
+
+	public static void addAsociacion(Asociacion asociacion) {
+		asociaciones.add(asociacion);
+	}
+
+	public static void removeAsociacion(Asociacion asociacion) {
+		asociaciones.remove(asociacion);
+	}
+
+	public static ArrayList<CasaCuna> getCasasCuna() {
+		return casasCuna;
+	}
+
+	public static void addCasaCuna(CasaCuna casaCuna) {
+		casasCuna.add(casaCuna);
+	}
+
+	public static void removeCasaCuna(CasaCuna casaCuna) {
+		casasCuna.remove(casaCuna);
+	}
+
+	public static ArrayList<Mascota> getMascotas() {
+		return mascotas;
+	}
+
+	public static void addMascota(Mascota mascota) {
+		mascotas.add(mascota);
+	}
+
+	public static void removeMascota(Mascota mascota) {
+		mascotas.remove(mascota);
+	}
+
+	public static ArrayList<Persona> getPersona() {
+		return personas;
+	}
+
+	public static void addPersona(Persona persona) {
+		personas.add(persona);
+	}
+
+	public static void removePersona(Persona persona) {
+		personas.remove(persona);
+	}
+
+	public static ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public static void addUsuario(Usuario usuario) {
+		usuarios.add(usuario);
+	}
+
+	public static void removeUsuario(Usuario usuario) {
+		usuarios.remove(usuario);
 	}
 }
