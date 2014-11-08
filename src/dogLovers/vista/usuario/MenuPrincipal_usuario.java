@@ -55,7 +55,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		setContentPane(principal);
 		setSize(Principal.getAncho(), Principal.getAlto());
 		GridBagLayout gbl_principal = new GridBagLayout();
-		gbl_principal.columnWidths = new int[] { 375, getWidth() - 375 };
+		gbl_principal.columnWidths = new int[] { 275, getWidth() - 275 };
 		gbl_principal.rowHeights = new int[] { getHeight() };
 		gbl_principal.columnWeights = new double[] { 1.0, 0.9 };
 		gbl_principal.rowWeights = new double[] { 0.0 };
@@ -170,7 +170,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_lblConsultas.gridy = 5;
 		panelContenido.add(lblConsultas, gbc_lblConsultas);
 
-		btn_CasaCuna = new PanelConFondo("check.png", false);
+		btn_CasaCuna = new PanelConFondo("casacuna.png", false);
 		GridBagConstraints gbc_btn_CasaCuna = new GridBagConstraints();
 		gbc_btn_CasaCuna.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_CasaCuna.fill = GridBagConstraints.BOTH;
@@ -178,7 +178,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_btn_CasaCuna.gridy = 6;
 		panelContenido.add(btn_CasaCuna, gbc_btn_CasaCuna);
 
-		btn_Adopciones = new PanelConFondo("check.png", false);
+		btn_Adopciones = new PanelConFondo("adoptar.png", false);
 		GridBagConstraints gbc_btn_Adopciones = new GridBagConstraints();
 		gbc_btn_Adopciones.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_Adopciones.fill = GridBagConstraints.BOTH;
