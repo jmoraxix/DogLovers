@@ -14,6 +14,7 @@
 package dogLovers.control;
 
 import dogLovers.modelo.Logica;
+import dogLovers.vista.Login;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -25,9 +26,12 @@ public class Coordinador {
 
 	public static Coordinador getINSTANCE() {
 		return INSTANCE;
+		
 	}
 
 	/**** DECLARACIÓN DE PANTALLAS ****/
+	 private static Login login;
+	
 
 	// Declaración clase logica
 	private static Logica logica;
@@ -41,9 +45,21 @@ public class Coordinador {
 		Coordinador.logica = logica;
 	}
 
+	public static Login getLogin() {
+		return login;
+	}
+
+	public static void setLogin(Login login) {
+		Coordinador.login = login;
+	}
+	
+
 	/**** FUNCIONES ENTRE CLASES ****/
 
 	/** MOSTRAR VENTANAS **/
+	public static void mostrarLogin(){
+		login.setVisible(true);
+	}
 
 	/** OCULTAR VENTANAS **/
 
