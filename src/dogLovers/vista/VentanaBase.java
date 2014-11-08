@@ -19,6 +19,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import dogLovers.DogLovers;
+import dogLovers.control.Principal;
 
 /**
  * @author JoséDavid 25/10/2014 Ventana base que se hereda a las demás de la
@@ -31,7 +32,7 @@ public class VentanaBase extends JFrame {
 	public VentanaBase() {
 		// Declaracion básica de la venta
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1024, 720);
+		setSize(Principal.getAncho(), Principal.getAlto());
 		setTitle("ALEJANDRIAX");
 		Image icon = Toolkit
 				.getDefaultToolkit()
