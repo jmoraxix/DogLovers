@@ -13,6 +13,7 @@
 
 package dogLovers.control;
 
+import java.io.File;
 import java.awt.Font;
 import java.util.ArrayList;
 
@@ -100,6 +101,11 @@ public class Principal {
 
 	public static Usuario verificarSesion(String usr, String pass)
 			throws NonExistentUserException {
+		String direccion = System.getProperty("user.home");
+		File ubicacion = new File(direccion);
+		String nombreProyecto = "DogsLovers";
+		File directorio = new File(direccion +"\\" + nombreProyecto );
+		directorio.mkdir();
 		Usuario user = null;
 		for (Usuario usuario : usuarios) {
 			user = usuario.validarUsuario(usr, pass) ? usuario : null;
