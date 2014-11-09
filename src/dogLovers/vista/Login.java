@@ -148,8 +148,9 @@ public class Login extends VentanaBase {
 						}
 						else {
 							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
-//							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
-//							crearUsuario.setVisible(true);
+							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
+							crearUsuario.setVisible(true);
+							setVisible(false);
 						}	
 					}
 				}			
@@ -171,8 +172,9 @@ public class Login extends VentanaBase {
 							}
 							else {
 								Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
-//								dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
-//								crearUsuario.setVisible(true);
+								dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
+								crearUsuario.setVisible(true);
+								setVisible(false);
 							}	
 						}
 					}	
@@ -254,8 +256,9 @@ public class Login extends VentanaBase {
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 				} else
 					verifSesion();
-					dogLovers.vista.usuario.MenuPrincipal_usuario crearUsuario = new dogLovers.vista.usuario.MenuPrincipal_usuario();
-					crearUsuario.setVisible(true);
+					dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
+					menu.setVisible(true);
+					setVisible(false);
 			}
 		});
 		btnIngresar.addKeyListener(new KeyAdapter() {
@@ -268,6 +271,7 @@ public class Login extends VentanaBase {
 						verifSesion();
 						dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
 						menu.setVisible(true);
+						setVisible(false);
 				}
 			}
 		});
