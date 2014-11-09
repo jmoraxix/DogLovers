@@ -9,6 +9,7 @@
  * Roger Villalobos
  * 2014079369
  */
+
 package dogLovers.modelo;
 
 /**
@@ -36,7 +37,7 @@ public abstract class Entidad {
 
 	/**** GETTERS AND SETTERS ****/
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -44,7 +45,7 @@ public abstract class Entidad {
 	}
 
 	public String getNumTelefono() {
-		return numTelefono;
+		return this.numTelefono;
 	}
 
 	public void setNumTelefono(String numTelefono) {
@@ -52,7 +53,7 @@ public abstract class Entidad {
 	}
 
 	public String getCorreo() {
-		return correo;
+		return this.correo;
 	}
 
 	public void setCorreo(String correo) {
@@ -60,7 +61,7 @@ public abstract class Entidad {
 	}
 
 	public int getCalificacion() {
-		return calificacion.getCalificacion();
+		return this.calificacion.getCalificacion();
 	}
 
 	public void addCalificacion(int calificacion) {
@@ -81,7 +82,7 @@ public abstract class Entidad {
 	}
 
 	public String getUbicacion() {
-		return ubicacion;
+		return this.ubicacion;
 	}
 
 	public void setUbicacion(String ubicacion) {
