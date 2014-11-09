@@ -33,7 +33,7 @@ public class VentanaBase extends JFrame {
 		// Declaracion básica de la venta
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(Principal.getAncho(), Principal.getAlto());
-		setTitle("ALEJANDRIAX");
+		setTitle("Dog Lovers");
 		Image icon = Toolkit
 				.getDefaultToolkit()
 				.getImage(
@@ -42,6 +42,6 @@ public class VentanaBase extends JFrame {
 		setIconImage(icon);
 
 		// Se declara la barra de menú
-		this.setJMenuBar(new BarraMenu());
+//		this.setJMenuBar(new BarraMenu());
 	}
 }
