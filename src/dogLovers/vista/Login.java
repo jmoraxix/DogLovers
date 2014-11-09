@@ -30,6 +30,7 @@ import javax.swing.JTextField;
 import dogLovers.control.Coordinador;
 import dogLovers.control.Principal;
 import dogLovers.control.exeptions.NonExistentUserException;
+import dogLovers.modelo.Usuario;
 
 /**
  * @author JoséDavid 08/11/2014
@@ -41,7 +42,7 @@ public class Login extends VentanaBase {
 	private JPasswordField txtContrasea_1;
 	private JTextField txtUsuario_1;
 	private JPasswordField txtConfirmarContrasena;
-	private JTextField txtUsuario;
+	private static JTextField txtUsuario;
 
 	public Login() {
 		PanelBase panel = new PanelBase();
@@ -132,6 +133,52 @@ public class Login extends VentanaBase {
 		txtConfirmarContrasena.setColumns(10);
 
 		JButton btnCrear = new JButton("Crear");
+		btnCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (txtUsuario.equals("") && txtContrasena.equals("") && txtConfirmarContrasena.equals("")){
+					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					if (verificarUsuario(txtUsuario.toString())){
+						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						if (!txtConfirmarContrasena.equals(txtContrasena)){
+							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+						else {
+							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
+//							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
+//							crearUsuario.setVisible(true);
+						}	
+					}
+				}			
+			}
+		});
+		btnCrear.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+					if (txtUsuario.equals("") && txtContrasena.equals("") && txtConfirmarContrasena.equals("")){
+						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
+						if (verificarUsuario(txtUsuario.toString())){
+							JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+						else {
+							if (!txtConfirmarContrasena.equals(txtContrasena)){
+								JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+							}
+							else {
+								Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
+//								dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
+//								crearUsuario.setVisible(true);
+							}	
+						}
+					}	
+				}
+			}
+		});
 		btnCrear.setFont(Principal.getLetratexto3());
 		GridBagConstraints gbc_btnCrear = new GridBagConstraints();
 		gbc_btnCrear.insets = new Insets(0, 0, 0, 5);
@@ -162,7 +209,7 @@ public class Login extends VentanaBase {
 		gbc_lblIngresar.gridy = 1;
 		panelIngresar.add(lblIngresar, gbc_lblIngresar);
 
-		JLabel lblUsuario_1 = new JLabel("Usuario");
+		JLabel lblUsuario_1 = new JLabel("Usuario:");
 		lblUsuario_1.setFont(Principal.getLetratexto3());
 		GridBagConstraints gbc_lblUsuario_1 = new GridBagConstraints();
 		gbc_lblUsuario_1.insets = new Insets(0, 0, 5, 5);
@@ -180,7 +227,7 @@ public class Login extends VentanaBase {
 		panelIngresar.add(txtUsuario_1, gbc_txtUsuario_1);
 		txtUsuario_1.setColumns(10);
 
-		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a");
+		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a:");
 		lblContrasea_1.setFont(Principal.getLetratexto3());
 		GridBagConstraints gbc_lblContrasea_1 = new GridBagConstraints();
 		gbc_lblContrasea_1.insets = new Insets(0, 0, 5, 5);
@@ -207,6 +254,8 @@ public class Login extends VentanaBase {
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 				} else
 					verifSesion();
+					dogLovers.vista.usuario.MenuPrincipal_usuario crearUsuario = new dogLovers.vista.usuario.MenuPrincipal_usuario();
+					crearUsuario.setVisible(true);
 			}
 		});
 		btnIngresar.addKeyListener(new KeyAdapter() {
@@ -217,6 +266,8 @@ public class Login extends VentanaBase {
 						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 					} else
 						verifSesion();
+						dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
+						menu.setVisible(true);
 				}
 			}
 		});
@@ -227,19 +278,29 @@ public class Login extends VentanaBase {
 		gbc_btnIngresar.gridy = 4;
 		panelIngresar.add(btnIngresar, gbc_btnIngresar);
 
-}
+	}
 
-	/***Metodos**/
+	/**** METODOS ****/
 	private void verifSesion(){
 		try {
 			Principal.verificarSesion(txtUsuario_1.getText(), txtContrasea_1.getPassword().toString());	
-			
+
 		} catch (NonExistentUserException e) {
 			JOptionPane.showMessageDialog(Coordinador.getLogin(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		
+
 	}
-	
+
+	public static boolean verificarUsuario(String usr){
+		boolean existe = false;
+		for(Usuario usuario : Principal.getUsuarios()){
+			if(usuario.getUsuario().equals(txtUsuario))
+				existe = true;
+		}
+		return existe;
+
+	}
+
 }
 
 

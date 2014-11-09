@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-
 import dogLovers.control.exeptions.NonExistentUserException;
 import dogLovers.modelo.Asociacion;
 import dogLovers.modelo.CasaCuna;
@@ -27,6 +26,7 @@ import dogLovers.modelo.Logica;
 import dogLovers.modelo.Mascota;
 import dogLovers.modelo.Persona;
 import dogLovers.modelo.Usuario;
+import dogLovers.vista.Login;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -56,10 +56,15 @@ public class Principal {
 	private static Logica logica;
 
 	/**** DECLARACIÓN DE PANTALLAS ****/
-
+	private static Login login;
+	
 	public static void main(String[] args) {
 		System.gc();
-
+		String direccion = System.getProperty("user.home");
+		File ubicacion = new File(direccion);
+		String nombreProyecto = "DogsLovers";
+		File directorio = new File(direccion +"\\" + nombreProyecto );
+		directorio.mkdir();
 		// LookAndFeel de la aplicacion
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		try {
@@ -80,7 +85,7 @@ public class Principal {
 	@SuppressWarnings("static-access")
 	private static void inicializarVentanas() {
 		/**** INSTANCIACIï¿½N CLASES ***/
-
+		login = new Login();
 		// Coordinador
 		coordinador = Coordinador.getINSTANCE();
 		// Lógica
@@ -101,11 +106,6 @@ public class Principal {
 
 	public static Usuario verificarSesion(String usr, String pass)
 			throws NonExistentUserException {
-		String direccion = System.getProperty("user.home");
-		File ubicacion = new File(direccion);
-		String nombreProyecto = "DogsLovers";
-		File directorio = new File(direccion +"\\" + nombreProyecto );
-		directorio.mkdir();
 		Usuario user = null;
 		for (Usuario usuario : usuarios) {
 			user = usuario.validarUsuario(usr, pass) ? usuario : null;
