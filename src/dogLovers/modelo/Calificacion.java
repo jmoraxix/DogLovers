@@ -9,6 +9,7 @@
  * Roger Villalobos
  * 2014079369
  */
+
 package dogLovers.modelo;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Calificacion {
 
 	/**** GETTERS AND SETTERS ****/
 	public int getCalificacion() {
-		return calificacion;
+		return this.calificacion;
 	}
 
 	public void addCalificacion(int calificacion) {
@@ -41,7 +42,7 @@ public class Calificacion {
 	}
 
 	public ArrayList<String> getNotas() {
-		return notas;
+		return this.notas;
 	}
 
 	public void addNotas(String nota) {

@@ -9,6 +9,7 @@
  * Roger Villalobos
  * 2014079369
  */
+
 package dogLovers.modelo;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Asociacion extends Entidad {
 
 	/**** MÉTODOS ****/
 	public ArrayList<Persona> getAsociados() {
-		return asociados;
+		return this.asociados;
 	}
 
 	public void addAsociado(Persona asociado) {
@@ -43,14 +44,14 @@ public class Asociacion extends Entidad {
 
 	public double getTotalDonaciones() {
 		double total = 0;
-		for (double donacion : donaciones) {
+		for (double donacion : this.donaciones) {
 			total += donacion;
 		}
 		return total;
 	}
 
 	public ArrayList<Double> getDonaciones() {
-		return donaciones;
+		return this.donaciones;
 	}
 
 	public void addDonacion(double donacion) {

@@ -1,5 +1,5 @@
 /** 
-* Proyecto Final POO
+ * Proyecto Final POO
  * Jose David Mora Loria
  * 2014004856
  * Diego Delgado Cerdas
@@ -9,13 +9,14 @@
  * Roger Villalobos
  * 2014079369
  */
+
 package dogLovers.modelo;
 
 import java.util.Date;
 
 /**
  * @author xDiegoxD 01/11/2014
- *
+ * 
  * 
  */
 public class Fotografia {
@@ -23,12 +24,12 @@ public class Fotografia {
 	private String url;
 	private Date fecha;
 	private String Titulo;
-	
-	/****CONSTRUCTOR****/
+
+	/**** CONSTRUCTOR ****/
 	public Fotografia(String url, Date fecha, String titulo) {
 		this.url = url;
 		this.fecha = fecha;
-		Titulo = titulo;
+		this.Titulo = titulo;
 	}
 
 	public Fotografia(String url, Date fecha) {
@@ -36,10 +37,10 @@ public class Fotografia {
 		this.fecha = fecha;
 	}
 
-	/****GETTERS AND SETTERS****/
+	/**** GETTERS AND SETTERS ****/
 
 	public String getUrl() {
-		return url;
+		return this.url;
 	}
 
 	public void setUrl(String url) {
@@ -47,7 +48,7 @@ public class Fotografia {
 	}
 
 	public Date getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
@@ -55,14 +56,11 @@ public class Fotografia {
 	}
 
 	public String getTitulo() {
-		return Titulo;
+		return this.Titulo;
 	}
 
 	public void setTitulo(String titulo) {
-		Titulo = titulo;
+		this.Titulo = titulo;
 	}
-	
-	
-	
-	
+
 }

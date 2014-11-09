@@ -1,8 +1,17 @@
+/**
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369
+ */
+
 package dogLovers.modelo;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author xDiegoxD 03/11/2014
+ * 
+ */
 public class Mascota {
 
 	/**** VARIABLES ****/
@@ -12,15 +21,20 @@ public class Mascota {
 	private String color;
 	private ArrayList<Fotografia> fotografias = new ArrayList<Fotografia>();
 	private Persona contacto;
-	private String estado;
+	private Estado estado;
 	private String lugar;
 	private Date fecha;
 	private boolean tieneRecompensa = false;
 	private Recompensa recompensa;
 	private ArrayList<String> notas = new ArrayList<String>();
 
+	// VARIABLES GLOBALES
+	public static enum Estado {
+		PERDIDO, ENCONTRADO, EN_ADOPCION, PROPIO
+	}
+
 	/**** CONSTRUCTOR ****/
-	public Mascota(String nombre, Persona contacto, String estado) {
+	public Mascota(String nombre, Persona contacto, Estado estado) {
 		this.nombre = nombre;
 		this.contacto = contacto;
 		this.estado = estado;
@@ -28,7 +42,7 @@ public class Mascota {
 
 	/**** MÉTODOS ****/
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -36,15 +50,15 @@ public class Mascota {
 	}
 
 	public String getChipID() {
-		return ChipID;
+		return this.ChipID;
 	}
 
 	public void setChipID(String chipID) {
-		ChipID = chipID;
+		this.ChipID = chipID;
 	}
 
 	public CaracteristicasMascota getCaracteristicas() {
-		return caracteristicas;
+		return this.caracteristicas;
 	}
 
 	public void setCaracteristicas(CaracteristicasMascota caracteristicas) {
@@ -52,7 +66,7 @@ public class Mascota {
 	}
 
 	public String getColor() {
-		return color;
+		return this.color;
 	}
 
 	public void setColor(String color) {
@@ -60,23 +74,23 @@ public class Mascota {
 	}
 
 	public Persona getContacto() {
-		return contacto;
+		return this.contacto;
 	}
 
 	public void setContacto(Persona contacto) {
 		this.contacto = contacto;
 	}
 
-	public String getEstado() {
-		return estado;
+	public Estado getEstado() {
+		return this.estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
 	public String getLugar() {
-		return lugar;
+		return this.lugar;
 	}
 
 	public void setLugar(String lugar) {
@@ -84,7 +98,7 @@ public class Mascota {
 	}
 
 	public Date getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 
 	public void setFecha(Date fecha) {
@@ -92,11 +106,11 @@ public class Mascota {
 	}
 
 	public boolean tieneRecompensa() {
-		return tieneRecompensa;
+		return this.tieneRecompensa;
 	}
 
 	public Recompensa getRecompensa() {
-		return recompensa;
+		return this.recompensa;
 	}
 
 	public void setRecompensa(Recompensa recompensa) {
@@ -105,7 +119,7 @@ public class Mascota {
 	}
 
 	public ArrayList<Fotografia> getFotografia() {
-		return fotografias;
+		return this.fotografias;
 	}
 
 	public void addFotografia(Fotografia foto) {
@@ -117,7 +131,7 @@ public class Mascota {
 	}
 
 	public ArrayList<String> getNotas() {
-		return notas;
+		return this.notas;
 	}
 
 	public void addNota(String nota) {
@@ -127,5 +141,4 @@ public class Mascota {
 	public void removeNota(String nota) {
 		this.notas.remove(nota);
 	}
-
 }
