@@ -21,7 +21,7 @@ public class Mascota {
 	private String color;
 	private ArrayList<Fotografia> fotografias = new ArrayList<Fotografia>();
 	private Persona contacto;
-	private Estado estado;
+	private EstadoMascota estado;
 	private String lugar;
 	private Date fecha;
 	private boolean tieneRecompensa = false;
@@ -29,12 +29,12 @@ public class Mascota {
 	private ArrayList<String> notas = new ArrayList<String>();
 
 	// VARIABLES GLOBALES
-	public static enum Estado {
-		PERDIDO, ENCONTRADO, EN_ADOPCION, PROPIO
+	public static enum EstadoMascota {
+		Seleccione, Perdido, Encontrado, En_Adopcion, Propio
 	}
 
 	/**** CONSTRUCTOR ****/
-	public Mascota(String nombre, Persona contacto, Estado estado) {
+	public Mascota(String nombre, Persona contacto, EstadoMascota estado) {
 		this.nombre = nombre;
 		this.contacto = contacto;
 		this.estado = estado;
@@ -81,11 +81,11 @@ public class Mascota {
 		this.contacto = contacto;
 	}
 
-	public Estado getEstado() {
+	public EstadoMascota getEstado() {
 		return this.estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(EstadoMascota estado) {
 		this.estado = estado;
 	}
 

@@ -19,13 +19,27 @@ package dogLovers.modelo;
 public class CaracteristicasMascota {
 
 	/**** VARIABLES ****/
-	private String tipoMascota;
-	private String razaMascota;
-	private String tamanoMascota;
+	private TipoMascota tipoMascota;
+	private RazaMascota razaMascota;
+	private TamanoMascota tamanoMascota;
+
+	// GLOBALES
+
+	public enum TipoMascota {
+		Seleccione, Perro, Gato, Otro
+	}
+
+	public enum RazaMascota {
+		Seleccione, Husky_Siberiano, Golder_Retriever, Labrador_Retriever, Pastor_Alemán, Beagle, Alaskan_Malamute, San_Bernardo, Boxer, Rottweiler, Samoyedo, Dálmata, Pit_Bull, Chow_Chow, Yorkshire_Terrier, Akita_Inu, Collie, Doberman, Bulldog_Inglés, Gran_Danés, Cocker_Inglés, Shar_Pei, Schnauzer, Chihuahua, Basset_Hound, Terranova, Pekinés
+	}
+
+	public enum TamanoMascota {
+		Seleccione, Grande, Mediano, Pequeño
+	}
 
 	/**** CONSTRUCTOR ****/
-	public CaracteristicasMascota(String tipoMascota, String razaMascota,
-			String tamanoMascota) {
+	public CaracteristicasMascota(TipoMascota tipoMascota,
+			RazaMascota razaMascota, TamanoMascota tamanoMascota) {
 		this.tipoMascota = tipoMascota;
 		this.razaMascota = razaMascota;
 		this.tamanoMascota = tamanoMascota;
@@ -33,27 +47,27 @@ public class CaracteristicasMascota {
 
 	/**** GETTERS AND SETTERS ****/
 
-	public String getTipoMascota() {
+	public TipoMascota getTipoMascota() {
 		return this.tipoMascota;
 	}
 
-	public void setTipoMascota(String tipoMascota) {
+	public void setTipoMascota(TipoMascota tipoMascota) {
 		this.tipoMascota = tipoMascota;
 	}
 
-	public String getRazaMascota() {
+	public RazaMascota getRazaMascota() {
 		return this.razaMascota;
 	}
 
-	public void setRazaMascota(String razaMascota) {
+	public void setRazaMascota(RazaMascota razaMascota) {
 		this.razaMascota = razaMascota;
 	}
 
-	public String getTamanoMascota() {
+	public TamanoMascota getTamanoMascota() {
 		return this.tamanoMascota;
 	}
 
-	public void setTamanoMascota(String tamanoMascota) {
+	public void setTamanoMascota(TamanoMascota tamanoMascota) {
 		this.tamanoMascota = tamanoMascota;
 	}
 
