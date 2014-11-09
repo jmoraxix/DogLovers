@@ -53,7 +53,7 @@ public class itemEnAdopcion extends PanelConFondo {
 		add(lblpersona, gbc_lblpersona);
 
 		JLabel lblTipo = new JLabel(mascota.getCaracteristicas()
-				.getTipoMascota());
+				.getTipoMascota().toString());
 		GridBagConstraints gbc_lblTipo = new GridBagConstraints();
 		gbc_lblTipo.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTipo.gridx = 1;
@@ -61,7 +61,7 @@ public class itemEnAdopcion extends PanelConFondo {
 		add(lblTipo, gbc_lblTipo);
 
 		JLabel lblRaza = new JLabel(mascota.getCaracteristicas()
-				.getRazaMascota());
+				.getRazaMascota().toString());
 		GridBagConstraints gbc_lblRaza = new GridBagConstraints();
 		gbc_lblRaza.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRaza.gridx = 1;
