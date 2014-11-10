@@ -12,18 +12,26 @@
  */
 package dogLovers.vista.usuario;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import dogLovers.control.Principal;
-import dogLovers.modelo.Usuario;
-import dogLovers.vista.*;
-
-import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import java.awt.event.*;
+import dogLovers.control.Coordinador;
+import dogLovers.control.Principal;
+import dogLovers.modelo.Persona;
+import dogLovers.modelo.Usuario;
+import dogLovers.vista.PanelBase;
+import dogLovers.vista.VentanaBase;
 /**
  * @author Róger 9/11/2014
  */
@@ -34,7 +42,7 @@ public class CrearUsuario extends VentanaBase {
 	private JTextField txtApellido2_1;
 	private JTextField txtApellido1_1;
 	private JTextField txtNombre_1;
-	private JTextField txtCedula;
+	private static JTextField txtCedula;
 	private JTextField txtTelefono;
 	private JTextField txtCorreo;
 	private JTextField txtUbicacion;
@@ -98,7 +106,7 @@ public class CrearUsuario extends VentanaBase {
 		gbc_lblConAsterisco.gridy = 1;
 		panelRegistro.add(lblConAsterisco, gbc_lblConAsterisco);
 
-		JLabel lblSonRequeridos = new JLabel(" son requeridos.");
+		JLabel lblSonRequeridos = new JLabel("son requeridos.");
 		lblSonRequeridos.setFont(Principal.getLetratexto3());
 		GridBagConstraints gbc_lblSonRequeridos = new GridBagConstraints();
 		gbc_lblSonRequeridos.anchor = GridBagConstraints.WEST;
@@ -239,6 +247,33 @@ public class CrearUsuario extends VentanaBase {
 		txtUbicacion.setColumns(10);
 
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if ((txtCedula.getText().isEmpty()) || (txtNombre_1.getText().isEmpty()) 
+							|| (txtApellido1_1.getText().isEmpty()) || (txtApellido2_1.getText().isEmpty())
+							|| (txtTelefono.getText().isEmpty()) || (txtCorreo.getText().isEmpty())){
+						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+					} 
+					else {
+						if (verificarCedulaExistente(txtCedula.getText())){
+							JOptionPane.showMessageDialog(Coordinador.getLogin(), "Esa cédula ya esta registrada", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+						else {
+							Persona persona = new Persona(txtCedula.getText(), txtNombre_1.getText(), txtApellido1_1.getText(), txtApellido2_1.getText());
+							persona.setCorreo(txtCorreo.getText());
+							persona.setNumTelefono(txtTelefono.toString());
+							persona.setUbicacion(txtUbicacion.toString());
+							usuario.setDatos(persona);
+							Principal.addUsuario(usuario);
+							Principal.addPersona(persona);
+							Coordinador.mostrarLogin();
+							Coordinador.ocultarCrearUsuario();
+							limpiarDatos();
+							}	
+						}			
+				}
+		});
 		btnGuardar.setFont(Principal.getLetratexto3());
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
 		gbc_btnGuardar.insets = new Insets(0, 0, 5, 5);
@@ -249,9 +284,9 @@ public class CrearUsuario extends VentanaBase {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				dogLovers.vista.Login regresar = new dogLovers.vista.Login();
-				regresar.setVisible(true);
-				setVisible(false);
+				Coordinador.mostrarLogin();
+				Coordinador.ocultarCrearUsuario();
+				limpiarDatos();
 			}
 		});
 		btnCancelar.setFont(Principal.getLetratexto3());
@@ -269,8 +304,30 @@ public class CrearUsuario extends VentanaBase {
 		this.usuario = usuario;
 	}
 
+	/**** MÉTODOS ****/
+	
+	public static boolean verificarCedulaExistente(String id){
+		boolean existe = false;
+		for(Persona cedula : Principal.getPersona()){
+			if(cedula.getCedula().equals(txtCedula.getText()))
+				existe = true;
+		}
+		return existe;
 
-
+	}	
+	
+	
+	public void limpiarDatos(){
+		txtNombre_1.setText("");
+		txtCedula.setText("");
+		txtTelefono.setText("");
+		txtApellido1_1.setText("");
+		txtApellido2_1.setText("");
+		txtCorreo.setText("");
+		txtUbicacion.setText("");
+		
+	}
+	
 	public void soloLetras(JTextField txt){
 		txt.addKeyListener(new KeyAdapter() {
 			@Override
