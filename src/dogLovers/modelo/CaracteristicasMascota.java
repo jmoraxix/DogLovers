@@ -1,13 +1,6 @@
-/** 
- * Proyecto Final POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
+/**
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369
  */
 
 package dogLovers.modelo;
@@ -26,15 +19,15 @@ public class CaracteristicasMascota {
 	// GLOBALES
 
 	public enum TipoMascota {
-		Seleccione, Perro, Gato, Otro
+		Seleccione, Perro, Gato, Otro, Sin_Especificar
 	}
 
 	public enum RazaMascota {
-		Seleccione, Husky_Siberiano, Golder_Retriever, Labrador_Retriever, Pastor_Alemán, Beagle, Alaskan_Malamute, San_Bernardo, Boxer, Rottweiler, Samoyedo, Dálmata, Pit_Bull, Chow_Chow, Yorkshire_Terrier, Akita_Inu, Collie, Doberman, Bulldog_Inglés, Gran_Danés, Cocker_Inglés, Shar_Pei, Schnauzer, Chihuahua, Basset_Hound, Terranova, Pekinés
+		Seleccione, Husky_Siberiano, Golder_Retriever, Labrador_Retriever, Pastor_Alemán, Beagle, Alaskan_Malamute, San_Bernardo, Boxer, Rottweiler, Samoyedo, Dálmata, Pit_Bull, Chow_Chow, Yorkshire_Terrier, Akita_Inu, Collie, Doberman, Bulldog_Inglés, Gran_Danés, Cocker_Inglés, Shar_Pei, Schnauzer, Chihuahua, Basset_Hound, Terranova, Pekinés, Otro, Sin_Especificar
 	}
 
 	public enum TamanoMascota {
-		Seleccione, Grande, Mediano, Pequeño
+		Seleccione, Grande, Mediano, Pequeño, Sin_Especificar
 	}
 
 	/**** CONSTRUCTOR ****/
