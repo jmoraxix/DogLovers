@@ -12,6 +12,7 @@
  */
 package dogLovers.vista.usuario;
 
+import dogLovers.control.Principal;
 import dogLovers.modelo.Mascota;
 import dogLovers.modelo.Persona;
 import dogLovers.vista.PanelBase;
@@ -34,6 +35,8 @@ import java.awt.ScrollPane;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
 
@@ -46,6 +49,9 @@ public class ConsultaMascotas extends VentanaBase {
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private PanelMostrarMascotas panel;
+	
+	private Persona nuevaP = new Persona("12345", "David", "Diaz", "Aguilar");
+	private Mascota nuevaM = new Mascota("Blacky", nuevaP, Mascota.EstadoMascota.Perdido);
 
 	public static void main(String[] args) {
 		ConsultaMascotas nueva = new ConsultaMascotas();
@@ -66,7 +72,7 @@ public class ConsultaMascotas extends VentanaBase {
 		panelPrincipal.add(lblConsultaDeMascotas);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"-----Seleccione-----", "C\u00E9dula", "Nombre", "Primer apellido", "Segundo apellido", "Tipo", "Pr\\u00E9stamos"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"-----Seleccione-----", "Lugar", "Chip", "Estado", "Raza", "Tipo", "Nombre", "En Adopcion"}));
 		comboBox.setBounds(10, 419, 283, 25);
 		panelPrincipal.add(comboBox);
 		
@@ -78,12 +84,32 @@ public class ConsultaMascotas extends VentanaBase {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Persona nueva = new Persona("1234", "David", "Diaz", "Aguilar");
-				Mascota nuevaM = new Mascota("Blacky", nueva, Mascota.EstadoMascota.Perdido);
-				panel.agregarMascota(nuevaM);				
+				
+				/**DATOS DE PRUEBA**/
+				nuevaP.setUbicacion("San Jose");
+				nuevaP.setNumTelefono("87474669");
+				nuevaP.setCorreo("david.diaz95@outlook.com");
+				
+				nuevaM.setChipID("12340");
+				nuevaM.setColor("Negro");
+				nuevaM.setLugar("San JoseM");
+				java.util.Date fecha = new Date();
+				nuevaM.setFecha(fecha);
+				
+				Principal.addMascota(nuevaM);
+				
+				llenarPanel(Principal.getMascotas());
 			}
 		});
 		btnBuscar.setBounds(10, 491, 283, 25);
 		panelPrincipal.add(btnBuscar);
-	}	
+	}
+	
+	public void llenarPanel(ArrayList<Mascota> mascotas){
+		panel = new PanelMostrarMascotas(this);
+
+		for(Mascota mascota : mascotas){
+			panel.agregarMascota(mascota);
+		}
+	}
 }
