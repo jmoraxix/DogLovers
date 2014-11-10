@@ -13,12 +13,12 @@
 
 package dogLovers.control;
 
+import java.io.File;
 import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-
 import dogLovers.control.exeptions.NonExistentUserException;
 import dogLovers.modelo.Asociacion;
 import dogLovers.modelo.CasaCuna;
@@ -26,6 +26,7 @@ import dogLovers.modelo.Logica;
 import dogLovers.modelo.Mascota;
 import dogLovers.modelo.Persona;
 import dogLovers.modelo.Usuario;
+import dogLovers.vista.Login;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -55,10 +56,15 @@ public class Principal {
 	private static Logica logica;
 
 	/**** DECLARACIÓN DE PANTALLAS ****/
-
+	private static Login login;
+	
 	public static void main(String[] args) {
 		System.gc();
-
+		String direccion = System.getProperty("user.home");
+		File ubicacion = new File(direccion);
+		String nombreProyecto = "DogsLovers";
+		File directorio = new File(direccion +"\\" + nombreProyecto );
+		directorio.mkdir();
 		// LookAndFeel de la aplicacion
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		try {
@@ -68,6 +74,9 @@ public class Principal {
 		}
 
 		inicializarVentanas();
+		Login login = new Login();
+		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		login.setVisible(true);
 		// GenerarDatos.generarDatos();
 	}
 
@@ -79,7 +88,7 @@ public class Principal {
 	@SuppressWarnings("static-access")
 	private static void inicializarVentanas() {
 		/**** INSTANCIACIï¿½N CLASES ***/
-
+		login = new Login();
 		// Coordinador
 		coordinador = Coordinador.getINSTANCE();
 		// Lógica
