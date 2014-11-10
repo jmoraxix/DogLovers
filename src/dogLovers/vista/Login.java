@@ -150,6 +150,7 @@ public class Login extends VentanaBase {
 											.toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
 							Coordinador.ocultarLogin();
+							limpiarDatos();
 
 						} else {
 
@@ -187,6 +188,7 @@ public class Login extends VentanaBase {
 											.toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
 							Coordinador.ocultarLogin();
+							limpiarDatos();
 						} else {
 							JOptionPane.showMessageDialog(
 									Coordinador.getLogin(),
@@ -318,10 +320,12 @@ public class Login extends VentanaBase {
 			Principal.setSESION_USUARIO(sesion);
 			if (sesion.esAdministrador()) {
 				System.out.println("Admin");
+				limpiarDatos();
 			} else {
 				System.out.println("User");
 				Coordinador.mostrarMenuPrincipal_usuario();
 				Coordinador.ocultarLogin();
+				limpiarDatos();
 			}
 
 		} catch (UserErrorException e) {
@@ -356,6 +360,15 @@ public class Login extends VentanaBase {
 			}
 		}
 		return valor;
+	}
+	
+	public void limpiarDatos(){
+		txtUsuario.setText("");
+		txtContrasena.setText("");
+		txtConfirmarContrasena.setText("");
+		txtUsuario_1.setText("");
+		txtContrasea_1.setText("");
+		
 	}
 
 }
