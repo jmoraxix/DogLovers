@@ -136,21 +136,23 @@ public class Login extends VentanaBase {
 		btnCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if (txtUsuario.equals("") && txtContrasena.equals("") && txtConfirmarContrasena.equals("")){
+				if ((txtUsuario.getText().isEmpty()) || (txtContrasena.getPassword().length <= 0) || (txtConfirmarContrasena.getPassword().length <= 0)){
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-				} else {
-					if (verificarUsuario(txtUsuario.toString())){
+				} 
+				else {
+					if (verificarUsuario(txtUsuario.getText())){
 						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						if (!txtConfirmarContrasena.equals(txtContrasena)){
-							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-						}
-						else {
+						if (validaContrasena(txtConfirmarContrasena.getPassword(), txtContrasena.getPassword())) {
 							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
 							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
 							crearUsuario.setVisible(true);
 							setVisible(false);
+						}
+						else {
+							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+
 						}	
 					}
 				}			
@@ -159,25 +161,25 @@ public class Login extends VentanaBase {
 		btnCrear.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent ke) {
-				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-					if (txtUsuario.equals("") && txtContrasena.equals("") && txtConfirmarContrasena.equals("")){
-						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-					} else {
-						if (verificarUsuario(txtUsuario.toString())){
-							JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+				if ((txtUsuario.getText().isEmpty()) || (txtContrasena.getPassword().length <= 0) || (txtConfirmarContrasena.getPassword().length <= 0)){
+					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+				} 
+				else {
+					if (verificarUsuario(txtUsuario.getText())){
+						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						if (validaContrasena(txtConfirmarContrasena.getPassword(), txtContrasena.getPassword())) {
+							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
+							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
+							crearUsuario.setVisible(true);
+							setVisible(false);
 						}
 						else {
-							if (!txtConfirmarContrasena.equals(txtContrasena)){
-								JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-							}
-							else {
-								Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
-								dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
-								crearUsuario.setVisible(true);
-								setVisible(false);
-							}	
-						}
-					}	
+							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+
+						}	
+					}
 				}
 			}
 		});
@@ -252,26 +254,26 @@ public class Login extends VentanaBase {
 		btnIngresar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if (txtUsuario_1.equals("") && txtContrasea_1.equals("")){
+				if ((txtUsuario_1.getText().isEmpty()) || (txtContrasea_1.getPassword().length <= 0)){
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 				} else
 					verifSesion();
-					dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
-					menu.setVisible(true);
-					setVisible(false);
+				dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
+				menu.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnIngresar.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent ke) {
 				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-					if (txtUsuario_1.equals("") && txtContrasea_1.equals("")){
+					if ((txtUsuario_1.getText().isEmpty()) || (txtContrasea_1.getPassword().length <= 0)){
 						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 					} else
 						verifSesion();
-						dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
-						menu.setVisible(true);
-						setVisible(false);
+					dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
+					menu.setVisible(true);
+					setVisible(false);
 				}
 			}
 		});
@@ -303,6 +305,22 @@ public class Login extends VentanaBase {
 		}
 		return existe;
 
+	}
+	private boolean validaContrasena(char[] pass1,char[] pass2) { 
+		boolean valor = true; 
+		int puntero = 0; 
+		if (pass1.length != pass2.length){ 
+			valor = false; 
+		} 
+		else{ 
+			while((valor)&&(puntero < pass1.length)){ 
+				if (pass1[puntero] != pass2[puntero]){ 
+					valor = false; 
+				} 
+				puntero++; 
+			} 
+		} 
+		return valor; 
 	}
 
 }

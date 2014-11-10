@@ -74,6 +74,9 @@ public class Principal {
 		}
 
 		inicializarVentanas();
+		Login login = new Login();
+		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		login.setVisible(true);
 		// GenerarDatos.generarDatos();
 	}
 
