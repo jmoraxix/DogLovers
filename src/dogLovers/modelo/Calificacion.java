@@ -1,13 +1,6 @@
-/** 
- * Proyecto Final POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
+/**
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369
  */
 
 package dogLovers.modelo;
@@ -19,17 +12,12 @@ import java.util.ArrayList;
  * 
  */
 public class Calificacion {
+
 	private int calificacion;
 	private ArrayList<String> notas = new ArrayList<String>();
 
 	/**** CONSTRUCTOR ****/
-	public Calificacion(int calificacion) {
-		this.calificacion = calificacion;
-	}
-
-	public Calificacion(int calificacion, String nota) {
-		this.calificacion = calificacion;
-		this.notas.add(nota);
+	public Calificacion() {
 	}
 
 	/**** GETTERS AND SETTERS ****/
@@ -45,7 +33,7 @@ public class Calificacion {
 		return this.notas;
 	}
 
-	public void addNotas(String nota) {
+	public void addNota(String nota) {
 		this.notas.add(nota);
 	}
 

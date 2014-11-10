@@ -1,13 +1,6 @@
-/** 
- * Proyecto Final POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
+/**
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369
  */
 
 package dogLovers.modelo;
@@ -17,11 +10,12 @@ package dogLovers.modelo;
  * 
  */
 public abstract class Entidad {
+
 	protected String identificacion;
 	protected String nombre;
 	protected String numTelefono;
 	protected String correo;
-	protected Calificacion calificacion;
+	protected Calificacion calificacion = new Calificacion();
 	protected boolean listaNegra = false;
 	protected String ubicacion;
 
@@ -70,7 +64,7 @@ public abstract class Entidad {
 
 	public void addCalificacion(int calificacion, String nota) {
 		this.calificacion.addCalificacion(calificacion);
-		this.calificacion.addNotas(nota);
+		this.calificacion.addNota(nota);
 	}
 
 	public void agregarListaNegra() {

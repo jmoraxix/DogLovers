@@ -1,14 +1,6 @@
 /**
- * Primer Proyecto POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
- * 25/10/2014
+ * Primer Proyecto POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369 25/10/2014
  */
 
 package dogLovers.control;
@@ -36,7 +28,6 @@ public class Coordinador {
 	private static CrearUsuario crearUsuario;
 	private static MenuPrincipal_usuario menuPrincipal_usuario;
 
-
 	/**** GETTERS AND SETTERS ***/
 
 	public static Login getLogin() {
@@ -46,9 +37,6 @@ public class Coordinador {
 	public static void setLogin(Login login) {
 		Coordinador.login = login;
 	}
-
-
-	/**** FUNCIONES ENTRE CLASES ****/
 
 	public static CrearUsuario getUsuario() {
 		return crearUsuario;
@@ -68,29 +56,29 @@ public class Coordinador {
 	}
 
 	/** MOSTRAR VENTANAS **/
-	public static void mostrarLogin(){
+	public static void mostrarLogin() {
 		login.setVisible(true);
 	}
 
-	public static void mostrarCrearUsuario(Usuario usuario){
+	public static void mostrarCrearUsuario(Usuario usuario) {
 		crearUsuario.setUsuario(usuario);
 		crearUsuario.setVisible(true);
 	}
 
-	public static void mostrarMenuPrincipal_usuario(){
+	public static void mostrarMenuPrincipal_usuario() {
 		menuPrincipal_usuario.setVisible(true);
 	}
+
 	/** OCULTAR VENTANAS **/
-	public static void ocultarLogin(){
+	public static void ocultarLogin() {
 		login.setVisible(false);
 	}
 
-	public static void ocultarCrearUsuario(){
+	public static void ocultarCrearUsuario() {
 		crearUsuario.setVisible(false);
 	}
 
-	public static void ocultarMenuPrincipal_usuario(){
+	public static void ocultarMenuPrincipal_usuario() {
 		menuPrincipal_usuario.setVisible(false);
 	}
-	/**** FUNCIONES DEL MODELO ****/
 }
