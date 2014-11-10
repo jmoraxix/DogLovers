@@ -140,17 +140,18 @@ public class Login extends VentanaBase {
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 				} 
 				else {
-					if (verificarUsuario(txtUsuario.getText())){
+					if (verificarUsuarioExistente(txtUsuario.getText())){
 						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						if (validaContrasena(txtConfirmarContrasena.getPassword(), txtContrasena.getPassword())) {
 							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
-							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
-							crearUsuario.setVisible(true);
-							setVisible(false);
+							Coordinador.mostrarCrearUsuario(user);
+							Coordinador.ocultarLogin();
+
 						}
 						else {
+
 							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
 
 						}	
@@ -165,15 +166,14 @@ public class Login extends VentanaBase {
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 				} 
 				else {
-					if (verificarUsuario(txtUsuario.getText())){
+					if (verificarUsuarioExistente(txtUsuario.getText())){
 						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						if (validaContrasena(txtConfirmarContrasena.getPassword(), txtContrasena.getPassword())) {
 							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
-							dogLovers.vista.usuario.CrearUsuario crearUsuario = new dogLovers.vista.usuario.CrearUsuario();
-							crearUsuario.setVisible(true);
-							setVisible(false);
+							Coordinador.mostrarCrearUsuario(user);
+							Coordinador.ocultarLogin();
 						}
 						else {
 							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
@@ -256,11 +256,9 @@ public class Login extends VentanaBase {
 			public void mouseClicked(MouseEvent arg0) {
 				if ((txtUsuario_1.getText().isEmpty()) || (txtContrasea_1.getPassword().length <= 0)){
 					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-				} else
+				} else{
 					verifSesion();
-				dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
-				menu.setVisible(true);
-				setVisible(false);
+				}
 			}
 		});
 		btnIngresar.addKeyListener(new KeyAdapter() {
@@ -269,11 +267,10 @@ public class Login extends VentanaBase {
 				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
 					if ((txtUsuario_1.getText().isEmpty()) || (txtContrasea_1.getPassword().length <= 0)){
 						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-					} else
+					} else{
 						verifSesion();
-					dogLovers.vista.usuario.MenuPrincipal_usuario menu = new dogLovers.vista.usuario.MenuPrincipal_usuario();
-					menu.setVisible(true);
-					setVisible(false);
+
+					}
 				}
 			}
 		});
@@ -289,7 +286,16 @@ public class Login extends VentanaBase {
 	/**** METODOS ****/
 	private void verifSesion(){
 		try {
-			Principal.verificarSesion(txtUsuario_1.getText(), txtContrasea_1.getPassword().toString());	
+
+			Usuario sesion = Principal.verificarSesion(txtUsuario_1.getText(), txtContrasea_1.getPassword().toString());	
+			Principal.setSESION_USUARIO(sesion);
+			if (sesion.esAdministrador()){
+
+			}else{
+				Coordinador.mostrarMenuPrincipal_usuario();
+				Coordinador.ocultarLogin();
+			}
+
 
 		} catch (NonExistentUserException e) {
 			JOptionPane.showMessageDialog(Coordinador.getLogin(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -297,7 +303,7 @@ public class Login extends VentanaBase {
 
 	}
 
-	public static boolean verificarUsuario(String usr){
+	public static boolean verificarUsuarioExistente(String usr){
 		boolean existe = false;
 		for(Usuario usuario : Principal.getUsuarios()){
 			if(usuario.getUsuario().equals(txtUsuario))
@@ -306,6 +312,7 @@ public class Login extends VentanaBase {
 		return existe;
 
 	}
+
 	private boolean validaContrasena(char[] pass1,char[] pass2) { 
 		boolean valor = true; 
 		int puntero = 0; 
