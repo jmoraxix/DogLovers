@@ -82,7 +82,7 @@ public class PanelMostrarMascotas extends JPanel {
 		gbc_lblEstado.gridy = 0;
 		add(lblEstado, gbc_lblEstado);
 		
-		JLabel lblVer = new JLabel("Ver ");
+		JLabel lblVer = new JLabel("Ver");
 		GridBagConstraints gbc_lblVer = new GridBagConstraints();
 		gbc_lblVer.insets = new Insets(0, 0, 5, 0);
 		gbc_lblVer.gridx = 6;
@@ -98,7 +98,7 @@ public class PanelMostrarMascotas extends JPanel {
 		gbc.insets = new Insets(0, 0, 5, 0);
 		gbc.gridy = contador;
 		//Agrega Fecha
-		JLabel lblFec = new JLabel("Hoy!!");
+		JLabel lblFec = new JLabel(mascota.getFecha().toLocaleString());
 		componentes.add(lblFec);
 		gbc.gridx = 0;
 		add(lblFec, gbc);
@@ -127,11 +127,11 @@ public class PanelMostrarMascotas extends JPanel {
 		componentes.add(lblEstado);
 		gbc.gridx = 5;
 		add(lblEstado, gbc);
-//		//Agrega un botón para ver la persona
-//		JButton btn = new JButton("Ver persona");
+//		//Agrega un botón para ver la mascota
+//		JButton btn = new JButton("Ver Mascota");
 //		btn.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent arg0) {
-//				new MostrarPersona(ventana, persona).setVisible(true);
+//				new MostrarMascota(ventana, mascota).setVisible(true);
 //			}
 //		});
 //		componentes.add(btn);

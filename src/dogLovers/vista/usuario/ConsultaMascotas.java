@@ -12,6 +12,7 @@
  */
 package dogLovers.vista.usuario;
 
+import dogLovers.control.Ordernamiento;
 import dogLovers.control.Principal;
 import dogLovers.modelo.Mascota;
 import dogLovers.modelo.Persona;
@@ -53,7 +54,7 @@ public class ConsultaMascotas extends VentanaConsulta {
 	private PanelMostrarMascotas panel;
 	
 	private Persona nuevaP = new Persona("12345", "David", "Diaz", "Aguilar");
-	private Mascota nuevaM = new Mascota("Blacky", nuevaP, Mascota.EstadoMascota.Perdido);
+	private Mascota nuevaM = new Mascota("Blacky", nuevaP, Mascota.EstadoMascota.En_Adopcion);
 
 	public static void main(String[] args) {
 		JFrame nuevo = new JFrame();
@@ -64,22 +65,101 @@ public class ConsultaMascotas extends VentanaConsulta {
 	public ConsultaMascotas(JFrame frame) {
 		super(frame, "Consulta Mascotas");
 		
-		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				llenarPanel(Principal.getMascotas());
-			}
-			
-		});
 		getLblConsulta().setText("Consulta Mascotas");
 
 		getCmbOpciones().setModel(new DefaultComboBoxModel(new String[] {"-----Seleccione-----",
-				"Nombre",
-				"ChipID",
-				"Raza",
-				"Tipo",
-				"Lugar",
-				"Estado",
-				"En Adopcion"}));
+				"Nombre", //1
+				"ChipID", //2
+				"Raza", //3
+				"Tipo", //4
+				"Lugar", //5
+				"Estado", //6
+				"En Adopcion"})); //7
+		
+		/**DATOS DE PRUEBA**/
+
+		nuevaP.setUbicacion("San Jose");
+		nuevaP.setNumTelefono("87474669");
+		nuevaP.setCorreo("david.diaz95@outlook.com");
+
+		nuevaM.setChipID("12340");
+		nuevaM.setColor("Negro");
+		nuevaM.setLugar("San Jose");
+		java.util.Date fecha = new Date();
+		nuevaM.setFecha(fecha);
+		Principal.addMascota(nuevaM);
+		
+		llenarPanel(Principal.getMascotas());
+		
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(cmbOpciones.getSelectedIndex() != 0){
+					ArrayList<Mascota> mascotas = Principal.getMascotas();
+					ArrayList<Mascota> res = (ArrayList<Mascota>) mascotas.clone();
+						switch (cmbOpciones.getSelectedIndex()) {
+						case 1:
+							if (!getTxtParametro().getText().equals(""))
+								for (Mascota mascota : mascotas)
+									if (!mascota.getNombre().toLowerCase().contains(txtParametro.getText().toLowerCase()))
+										res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+						case 2:
+							if (!getTxtParametro().getText().equals(""))
+								for (Mascota mascota : mascotas)
+									if (!mascota.getChipID().toLowerCase().contains(txtParametro.getText().toLowerCase()))
+										res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+						case 3:
+							if (!getTxtParametro().getText().equals(""))
+								for (Mascota mascota : mascotas)
+									if (!mascota.getCaracteristicas().getRazaMascota().name().toLowerCase().contains(txtParametro.getText().toLowerCase()))
+										res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+						case 4:
+							if (!getTxtParametro().getText().equals(""))
+								for (Mascota mascota : mascotas)
+									if (!mascota.getCaracteristicas().getTipoMascota().name().toLowerCase().contains(txtParametro.getText().toLowerCase()))
+										res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+						case 5:
+							if (!getTxtParametro().getText().equals(""))
+								for (Mascota mascota : mascotas)
+									if (!mascota.getLugar().toLowerCase().contains(txtParametro.getText().toLowerCase()))
+										res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+						case 6:
+							if (!getTxtParametro().getText().equals(""))
+								for (Mascota mascota : mascotas)
+									if (!mascota.getEstado().toString().toLowerCase().contains(txtParametro.getText().toLowerCase()))
+										res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+						case 7:
+							for (Mascota mascota : mascotas)
+								if (!mascota.getEstado().name().equals("En_Adopcion"))
+									res.remove(mascota);
+							Ordernamiento.ordenarFechas(res);
+							llenarPanel(res);
+							break;
+							
+						default:
+						}
+				}
+			}
+			
+		});
+		
 	}
 	
 	public void llenarPanel(ArrayList<Mascota> mascotas){
