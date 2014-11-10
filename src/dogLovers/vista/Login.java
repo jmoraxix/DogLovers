@@ -148,6 +148,7 @@ public class Login extends VentanaBase {
 							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
 							Coordinador.ocultarLogin();
+							limpiarDatos();
 
 						}
 						else {
@@ -174,6 +175,8 @@ public class Login extends VentanaBase {
 							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
 							Coordinador.ocultarLogin();
+							limpiarDatos();
+
 						}
 						else {
 							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
@@ -306,7 +309,7 @@ public class Login extends VentanaBase {
 	public static boolean verificarUsuarioExistente(String usr){
 		boolean existe = false;
 		for(Usuario usuario : Principal.getUsuarios()){
-			if(usuario.getUsuario().equals(txtUsuario))
+			if(usuario.getUsuario().equals(txtUsuario.getText()))
 				existe = true;
 		}
 		return existe;
@@ -330,6 +333,13 @@ public class Login extends VentanaBase {
 		return valor; 
 	}
 
+	public void limpiarDatos(){
+		txtUsuario.setText("");
+		txtContrasena.setText("");
+		txtConfirmarContrasena.setText("");
+		txtUsuario_1.setText("");
+		txtContrasea_1.setText("");
+	}
 }
 
 
