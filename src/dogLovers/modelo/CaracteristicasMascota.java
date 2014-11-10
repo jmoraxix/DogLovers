@@ -30,7 +30,7 @@ public class CaracteristicasMascota {
 	}
 
 	public enum RazaMascota {
-		Seleccione, Husky_Siberiano, Golder_Retriever, Labrador_Retriever, Pastor_Alemán, Beagle, Alaskan_Malamute, San_Bernardo, Boxer, Rottweiler, Samoyedo, Dálmata, Pit_Bull, Chow_Chow, Yorkshire_Terrier, Akita_Inu, Collie, Doberman, Bulldog_Inglés, Gran_Danés, Cocker_Inglés, Shar_Pei, Schnauzer, Chihuahua, Basset_Hound, Terranova, Pekinés
+		Seleccione, Husky_Siberiano, Golder_Retriever, Labrador_Retriever, Pastor_Alemán, Beagle, Alaskan_Malamute, San_Bernardo, Boxer, Rottweiler, Samoyedo, Dálmata, Pit_Bull, Chow_Chow, Yorkshire_Terrier, Akita_Inu, Collie, Doberman, Bulldog_Inglés, Gran_Danés, Cocker_Inglés, Shar_Pei, Schnauzer, Chihuahua, Basset_Hound, Terranova, Pekinés, Otro
 	}
 
 	public enum TamanoMascota {
