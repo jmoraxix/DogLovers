@@ -13,20 +13,22 @@
 
 package dogLovers.control;
 
-import java.io.File;
 import java.awt.Font;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+
 import dogLovers.control.exeptions.NonExistentUserException;
 import dogLovers.modelo.Asociacion;
 import dogLovers.modelo.CasaCuna;
-import dogLovers.modelo.Logica;
 import dogLovers.modelo.Mascota;
 import dogLovers.modelo.Persona;
 import dogLovers.modelo.Usuario;
 import dogLovers.vista.Login;
+import dogLovers.vista.usuario.CrearUsuario;
+import dogLovers.vista.usuario.MenuPrincipal_usuario;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -39,8 +41,11 @@ public class Principal {
 	private final static Font letraTexto2 = new Font("Georgia", Font.PLAIN, 20);
 	private final static Font letraTexto3 = new Font("Georgia", Font.PLAIN, 16);
 
-	private static String SESION_USUARIO;
+	private static Usuario SESION_USUARIO;
 	private static int ancho = 1200, alto = 600;
+	
+	private static String nombreProyecto = "DogsLovers";
+	private static String ruta = System.getProperty("user.home") + "\\" + nombreProyecto;
 
 	private static ArrayList<Asociacion> asociaciones = new ArrayList<Asociacion>();
 	private static ArrayList<CasaCuna> casasCuna = new ArrayList<CasaCuna>();
@@ -52,19 +57,18 @@ public class Principal {
 	// Declaración clase coordinador
 	private static Coordinador coordinador;
 
-	// Declaración clase lógica
-	private static Logica logica;
 
 	/**** DECLARACIÓN DE PANTALLAS ****/
 	private static Login login;
+	private static CrearUsuario creaUsuario;
+	private static MenuPrincipal_usuario menuPrincipal_usuario;
 	
 	public static void main(String[] args) {
 		System.gc();
-		String direccion = System.getProperty("user.home");
-		File ubicacion = new File(direccion);
-		String nombreProyecto = "DogsLovers";
-		File directorio = new File(direccion +"\\" + nombreProyecto );
+		
+		File directorio = new File(ruta);
 		directorio.mkdir();
+		
 		// LookAndFeel de la aplicacion
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		try {
@@ -74,9 +78,6 @@ public class Principal {
 		}
 
 		inicializarVentanas();
-		Login login = new Login();
-		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		login.setVisible(true);
 		// GenerarDatos.generarDatos();
 	}
 
@@ -89,43 +90,38 @@ public class Principal {
 	private static void inicializarVentanas() {
 		/**** INSTANCIACIï¿½N CLASES ***/
 		login = new Login();
+		creaUsuario = new CrearUsuario();
+		menuPrincipal_usuario = new MenuPrincipal_usuario();
 		// Coordinador
 		coordinador = Coordinador.getINSTANCE();
-		// Lógica
-		logica = new Logica();
-
-		/**** RELACIONES ENTRE CLASES ****/
-
-		// Lógica
-		logica.setCoordinador(coordinador);
 
 		/**** RELACIONES CON EL COORDINADOR ****/
-
-		// Lógica
-		coordinador.setLogica(logica);
-
-		// coordinador.mostrarVentanaPrincipal();
+		coordinador.setLogin(login);
+		coordinador.setMenuPrincipal_Usuario(menuPrincipal_usuario);
+		coordinador.setUsuario(creaUsuario);
+		
+		coordinador.mostrarLogin();
 	}
 
 	public static Usuario verificarSesion(String usr, String pass)
 			throws NonExistentUserException {
-		Usuario user = null;
+		Usuario user = new Usuario("pepe12","123",false );
 		for (Usuario usuario : usuarios) {
 			user = usuario.validarUsuario(usr, pass) ? usuario : null;
 		}
 
-		if (user.equals(null))
+		if (user.equals(new Usuario("pepe12","123",false )))
 			throw new NonExistentUserException(usr);
 
 		return user;
 	}
 
 	/**** GETTERS AND SETTERS ****/
-	public static String getSESION_USUARIO() {
+	public static Usuario getSESION_USUARIO() {
 		return SESION_USUARIO;
 	}
 
-	public static void setSESION_USUARIO(String sESION_USUARIO) {
+	public static void setSESION_USUARIO(Usuario sESION_USUARIO) {
 		SESION_USUARIO = sESION_USUARIO;
 	}
 
@@ -135,14 +131,6 @@ public class Principal {
 
 	public static void setCoordinador(Coordinador coordinador) {
 		Principal.coordinador = coordinador;
-	}
-
-	public static Logica getLogica() {
-		return logica;
-	}
-
-	public static void setLogica(Logica logica) {
-		Principal.logica = logica;
 	}
 
 	public static Font getLetratitulo1() {
@@ -171,6 +159,14 @@ public class Principal {
 
 	public static ArrayList<Asociacion> getAsociaciones() {
 		return asociaciones;
+	}
+
+	public static String getNombreProyecto() {
+		return nombreProyecto;
+	}
+
+	public static String getRuta() {
+		return ruta;
 	}
 
 	public static void addAsociacion(Asociacion asociacion) {
