@@ -9,7 +9,7 @@ package dogLovers.modelo;
  * @author xDiegoxD 01/11/2014
  * 
  */
-public class Recompensa {
+public class Monto {
 
 	private double monto;
 	private Moneda moneda;
@@ -19,7 +19,7 @@ public class Recompensa {
 	}
 
 	/**** CONSTRUCTOR ****/
-	public Recompensa(double monto, Moneda moneda) {
+	public Monto(double monto, Moneda moneda) {
 		this.monto = monto;
 		this.moneda = moneda;
 	}
