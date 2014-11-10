@@ -58,29 +58,17 @@ public class ConsultaMascotas extends VentanaConsulta {
 	public static void main(String[] args) {
 		JFrame nuevo = new JFrame();
 		ConsultaMascotas nueva = new ConsultaMascotas(nuevo);
-		nueva.setVisible(true);		
+		nueva.setVisible(true);
 	}
 	
 	public ConsultaMascotas(JFrame frame) {
 		super(frame, "Consulta Mascotas");
 		
-		/**DATOS DE PRUEBA**/
-		nuevaP.setUbicacion("San Jose");
-		nuevaP.setNumTelefono("87474669");
-		nuevaP.setCorreo("david.diaz95@outlook.com");
-		
-		nuevaM.setChipID("12340");
-		nuevaM.setColor("Negro");
-		nuevaM.setLugar("San JoseM");
-		java.util.Date fecha = new Date();
-		nuevaM.setFecha(fecha);
-		
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				llenarPanel(Principal.getMascotas());
-				
 			}
+			
 		});
 		getLblConsulta().setText("Consulta Mascotas");
 
