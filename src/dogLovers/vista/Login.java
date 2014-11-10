@@ -1,15 +1,8 @@
 /**
- * Proyecto Final POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
- * 08/11/2014
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369 08/11/2014
  */
+
 package dogLovers.vista;
 
 import java.awt.GridBagConstraints;
@@ -29,7 +22,7 @@ import javax.swing.JTextField;
 
 import dogLovers.control.Coordinador;
 import dogLovers.control.Principal;
-import dogLovers.control.exeptions.NonExistentUserException;
+import dogLovers.control.exeptions.UserErrorException;
 import dogLovers.modelo.Usuario;
 
 /**
@@ -63,9 +56,9 @@ public class Login extends VentanaBase {
 		gbc_panelCrear.gridy = 1;
 		panel.add(panelCrear, gbc_panelCrear);
 		GridBagLayout gbl_panelCrear = new GridBagLayout();
-		gbl_panelCrear.columnWidths = new int[] {0, 0, 0, 0 };
+		gbl_panelCrear.columnWidths = new int[] { 0, 0, 0, 0 };
 		gbl_panelCrear.rowHeights = new int[] { 0, 0, 0, 0 };
-		gbl_panelCrear.columnWeights = new double[] {1.0, 0.0, 1.0, 1.0 };
+		gbl_panelCrear.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0 };
 		gbl_panelCrear.rowWeights = new double[] { 2.0, 0.0, 0.0, 0.0, 1.0 };
 		panelCrear.setLayout(gbl_panelCrear);
 
@@ -105,14 +98,14 @@ public class Login extends VentanaBase {
 		gbc_lblContrasea.gridy = 2;
 		panelCrear.add(lblContrasea, gbc_lblContrasea);
 
-		txtContrasena = new JPasswordField();
+		this.txtContrasena = new JPasswordField();
 		GridBagConstraints gbc_txtContrasena = new GridBagConstraints();
 		gbc_txtContrasena.insets = new Insets(0, 0, 5, 5);
 		gbc_txtContrasena.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtContrasena.gridx = 2;
 		gbc_txtContrasena.gridy = 2;
-		panelCrear.add(txtContrasena, gbc_txtContrasena);
-		txtContrasena.setColumns(10);
+		panelCrear.add(this.txtContrasena, gbc_txtContrasena);
+		this.txtContrasena.setColumns(10);
 
 		JLabel lblConfirmarContrasea = new JLabel("Confirmar contrase\u00F1a:");
 		lblConfirmarContrasea.setFont(Principal.getLetratexto3());
@@ -123,65 +116,84 @@ public class Login extends VentanaBase {
 		gbc_lblConfirmarContrasea.gridy = 3;
 		panelCrear.add(lblConfirmarContrasea, gbc_lblConfirmarContrasea);
 
-		txtConfirmarContrasena = new JPasswordField();
+		this.txtConfirmarContrasena = new JPasswordField();
 		GridBagConstraints gbc_txtConfirmarContrasena = new GridBagConstraints();
 		gbc_txtConfirmarContrasena.insets = new Insets(0, 0, 5, 5);
 		gbc_txtConfirmarContrasena.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtConfirmarContrasena.gridx = 2;
 		gbc_txtConfirmarContrasena.gridy = 3;
-		panelCrear.add(txtConfirmarContrasena, gbc_txtConfirmarContrasena);
-		txtConfirmarContrasena.setColumns(10);
+		panelCrear.add(this.txtConfirmarContrasena, gbc_txtConfirmarContrasena);
+		this.txtConfirmarContrasena.setColumns(10);
 
 		JButton btnCrear = new JButton("Crear");
 		btnCrear.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if ((txtUsuario.getText().isEmpty()) || (txtContrasena.getPassword().length <= 0) || (txtConfirmarContrasena.getPassword().length <= 0)){
-					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-				} 
-				else {
-					if (verificarUsuarioExistente(txtUsuario.getText())){
-						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-					}
-					else {
-						if (validaContrasena(txtConfirmarContrasena.getPassword(), txtContrasena.getPassword())) {
-							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
+				if ((txtUsuario.getText().isEmpty())
+						|| (Login.this.txtContrasena.getPassword().length <= 0)
+						|| (Login.this.txtConfirmarContrasena.getPassword().length <= 0)) {
+					JOptionPane.showMessageDialog(Coordinador.getLogin(),
+							"Campos requeridos vacios", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					if (verificarUsuarioExistente(txtUsuario.getText())) {
+						JOptionPane.showMessageDialog(Coordinador.getLogin(),
+								"El Usuario ya existe", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						if (validaContrasena(
+								Login.this.txtConfirmarContrasena.getPassword(),
+								Login.this.txtContrasena.getPassword())) {
+							Usuario user = new Usuario(txtUsuario.getText(),
+									Login.this.txtContrasena.getPassword()
+											.toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
 							Coordinador.ocultarLogin();
-							limpiarDatos();
+
+						} else {
+
+							JOptionPane.showMessageDialog(
+									Coordinador.getLogin(),
+									"La confirmación de la contraseña no coincide con la contraseña",
+									"Error", JOptionPane.ERROR_MESSAGE);
 
 						}
-						else {
-
-							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-
-						}	
 					}
-				}			
+				}
 			}
 		});
 		btnCrear.addKeyListener(new KeyAdapter() {
+
 			@Override
 			public void keyPressed(KeyEvent ke) {
-				if ((txtUsuario.getText().isEmpty()) || (txtContrasena.getPassword().length <= 0) || (txtConfirmarContrasena.getPassword().length <= 0)){
-					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-				} 
-				else {
-					if (verificarUsuarioExistente(txtUsuario.getText())){
-						JOptionPane.showMessageDialog(Coordinador.getLogin(), "El Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-					}
-					else {
-						if (validaContrasena(txtConfirmarContrasena.getPassword(), txtContrasena.getPassword())) {
-							Usuario user = new Usuario(txtUsuario.getText(), txtContrasena.getPassword().toString(), false);
+				if ((txtUsuario.getText().isEmpty())
+						|| (Login.this.txtContrasena.getPassword().length <= 0)
+						|| (Login.this.txtConfirmarContrasena.getPassword().length <= 0)) {
+					JOptionPane.showMessageDialog(Coordinador.getLogin(),
+							"Campos requeridos vacios", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					if (verificarUsuarioExistente(txtUsuario.getText())) {
+						JOptionPane.showMessageDialog(Coordinador.getLogin(),
+								"El Usuario ya existe", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						if (validaContrasena(
+								Login.this.txtConfirmarContrasena.getPassword(),
+								Login.this.txtContrasena.getPassword())) {
+							Usuario user = new Usuario(txtUsuario.getText(),
+									Login.this.txtContrasena.getPassword()
+											.toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
 							Coordinador.ocultarLogin();
-							limpiarDatos();
+						} else {
+							JOptionPane.showMessageDialog(
+									Coordinador.getLogin(),
+									"La confirmación de la contraseña no coincide con la contraseña",
+									"Error", JOptionPane.ERROR_MESSAGE);
 
 						}
-						else {
-							JOptionPane.showMessageDialog(Coordinador.getLogin(), "La confirmación de la contraseña no coincide con la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
-
-						}	
 					}
 				}
 			}
@@ -204,8 +216,10 @@ public class Login extends VentanaBase {
 		GridBagLayout gbl_panelIngresar = new GridBagLayout();
 		gbl_panelIngresar.columnWidths = new int[] { 0, 0, 0, 0, 0 };
 		gbl_panelIngresar.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
-		gbl_panelIngresar.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_panelIngresar.rowWeights = new double[] {2.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_panelIngresar.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0,
+				Double.MIN_VALUE };
+		gbl_panelIngresar.rowWeights = new double[] { 2.0, 0.0, 0.0, 0.0, 1.0,
+				Double.MIN_VALUE };
 		panelIngresar.setLayout(gbl_panelIngresar);
 
 		JLabel lblIngresar = new JLabel("Ingresar");
@@ -225,14 +239,14 @@ public class Login extends VentanaBase {
 		gbc_lblUsuario_1.gridy = 2;
 		panelIngresar.add(lblUsuario_1, gbc_lblUsuario_1);
 
-		txtUsuario_1 = new JTextField();
+		this.txtUsuario_1 = new JTextField();
 		GridBagConstraints gbc_txtUsuario_1 = new GridBagConstraints();
 		gbc_txtUsuario_1.insets = new Insets(0, 0, 5, 5);
 		gbc_txtUsuario_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtUsuario_1.gridx = 2;
 		gbc_txtUsuario_1.gridy = 2;
-		panelIngresar.add(txtUsuario_1, gbc_txtUsuario_1);
-		txtUsuario_1.setColumns(10);
+		panelIngresar.add(this.txtUsuario_1, gbc_txtUsuario_1);
+		this.txtUsuario_1.setColumns(10);
 
 		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a:");
 		lblContrasea_1.setFont(Principal.getLetratexto3());
@@ -243,34 +257,42 @@ public class Login extends VentanaBase {
 		gbc_lblContrasea_1.gridy = 3;
 		panelIngresar.add(lblContrasea_1, gbc_lblContrasea_1);
 
-		txtContrasea_1 = new JPasswordField();
+		this.txtContrasea_1 = new JPasswordField();
 		GridBagConstraints gbc_txtContrasea_1 = new GridBagConstraints();
 		gbc_txtContrasea_1.insets = new Insets(0, 0, 5, 5);
 		gbc_txtContrasea_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtContrasea_1.gridx = 2;
 		gbc_txtContrasea_1.gridy = 3;
-		panelIngresar.add(txtContrasea_1, gbc_txtContrasea_1);
-		txtContrasea_1.setColumns(10);
+		panelIngresar.add(this.txtContrasea_1, gbc_txtContrasea_1);
+		this.txtContrasea_1.setColumns(10);
 
 		JButton btnIngresar = new JButton("Ingresar");
 		btnIngresar.setFont(Principal.getLetratexto3());
 		btnIngresar.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if ((txtUsuario_1.getText().isEmpty()) || (txtContrasea_1.getPassword().length <= 0)){
-					JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-				} else{
+				if ((Login.this.txtUsuario_1.getText().isEmpty())
+						|| (Login.this.txtContrasea_1.getPassword().length <= 0)) {
+					JOptionPane.showMessageDialog(Coordinador.getLogin(),
+							"Campos requeridos vacios", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
 					verifSesion();
 				}
 			}
 		});
 		btnIngresar.addKeyListener(new KeyAdapter() {
+
 			@Override
 			public void keyPressed(KeyEvent ke) {
 				if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-					if ((txtUsuario_1.getText().isEmpty()) || (txtContrasea_1.getPassword().length <= 0)){
-						JOptionPane.showMessageDialog(Coordinador.getLogin(), "Campos requeridos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-					} else{
+					if ((Login.this.txtUsuario_1.getText().isEmpty())
+							|| (Login.this.txtContrasea_1.getPassword().length <= 0)) {
+						JOptionPane.showMessageDialog(Coordinador.getLogin(),
+								"Campos requeridos vacios", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
 						verifSesion();
 
 					}
@@ -287,60 +309,53 @@ public class Login extends VentanaBase {
 	}
 
 	/**** METODOS ****/
-	private void verifSesion(){
+	private void verifSesion() {
 		try {
 
-			Usuario sesion = Principal.verificarSesion(txtUsuario_1.getText(), txtContrasea_1.getPassword().toString());	
+			Usuario sesion = Principal.verificarSesion(
+					this.txtUsuario_1.getText(),
+					String.valueOf(this.txtContrasea_1.getPassword()));
 			Principal.setSESION_USUARIO(sesion);
-			if (sesion.esAdministrador()){
-
-			}else{
+			if (sesion.esAdministrador()) {
+				System.out.println("Admin");
+			} else {
+				System.out.println("User");
 				Coordinador.mostrarMenuPrincipal_usuario();
 				Coordinador.ocultarLogin();
 			}
 
-
-		} catch (NonExistentUserException e) {
-			JOptionPane.showMessageDialog(Coordinador.getLogin(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		} catch (UserErrorException e) {
+			JOptionPane.showMessageDialog(Coordinador.getLogin(),
+					"Usuario o contraseña erróneos.", "Error",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
 
-	public static boolean verificarUsuarioExistente(String usr){
+	public static boolean verificarUsuarioExistente(String usr) {
 		boolean existe = false;
-		for(Usuario usuario : Principal.getUsuarios()){
-			if(usuario.getUsuario().equals(txtUsuario.getText()))
+		for (Usuario usuario : Principal.getUsuarios()) {
+			if (usuario.getUsuario().equals(txtUsuario))
 				existe = true;
 		}
 		return existe;
 
 	}
 
-	private boolean validaContrasena(char[] pass1,char[] pass2) { 
-		boolean valor = true; 
-		int puntero = 0; 
-		if (pass1.length != pass2.length){ 
-			valor = false; 
-		} 
-		else{ 
-			while((valor)&&(puntero < pass1.length)){ 
-				if (pass1[puntero] != pass2[puntero]){ 
-					valor = false; 
-				} 
-				puntero++; 
-			} 
-		} 
-		return valor; 
+	private boolean validaContrasena(char[] pass1, char[] pass2) {
+		boolean valor = true;
+		int puntero = 0;
+		if (pass1.length != pass2.length) {
+			valor = false;
+		} else {
+			while ((valor) && (puntero < pass1.length)) {
+				if (pass1[puntero] != pass2[puntero]) {
+					valor = false;
+				}
+				puntero++;
+			}
+		}
+		return valor;
 	}
 
-	public void limpiarDatos(){
-		txtUsuario.setText("");
-		txtContrasena.setText("");
-		txtConfirmarContrasena.setText("");
-		txtUsuario_1.setText("");
-		txtContrasea_1.setText("");
-	}
 }
-
-
-

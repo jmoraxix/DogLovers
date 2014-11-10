@@ -38,7 +38,8 @@ public class Usuario {
 	}
 
 	public boolean validarUsuario(String usuario, String contrasena) {
-		return this.usuario == usuario && this.contrasena == contrasena;
+		return this.usuario.equals(usuario)
+				&& this.contrasena.equals(contrasena);
 	}
 
 	public Persona getDatos() {

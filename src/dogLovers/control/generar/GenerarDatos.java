@@ -20,7 +20,7 @@ import dogLovers.modelo.Usuario;
 
 public final class GenerarDatos {
 
-	private static Usuario admin, usr1, usr2, usr3, usr4;
+	private static Usuario usr1, usr2, usr3, usr4;
 
 	/*
 	 * Generar: usuarios, personas, mascotas perdidas, mascotas encontradas,
@@ -38,9 +38,9 @@ public final class GenerarDatos {
 
 	private static void generarUsuarios() {
 		// Primer usuario administrador
-		admin = new Usuario("admin", "123", true);
+		Usuario admin = new Usuario("admin", "123", true);
 		Persona persAdmin = new Persona("123456789", "Admin", "Muy bueno",
-				"Sin segundo apellido");
+				"Sin_segundo_apellido");
 		persAdmin.setCorreo("jdevmora@gmail.com");
 		persAdmin.setNumTelefono("84518318");
 		persAdmin.setUbicacion("San José");

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import dogLovers.control.exeptions.NonExistentUserException;
+import dogLovers.control.exeptions.UserErrorException;
 import dogLovers.control.generar.GenerarDatos;
 import dogLovers.modelo.Asociacion;
 import dogLovers.modelo.CasaCuna;
@@ -97,14 +97,15 @@ public class Principal {
 	}
 
 	public static Usuario verificarSesion(String usr, String pass)
-			throws NonExistentUserException {
-		Usuario user = new Usuario("pepe12", "123", false);
+			throws UserErrorException {
+		Usuario user = new Usuario("QWERTY123", "123", false);
 		for (Usuario usuario : usuarios) {
-			user = usuario.validarUsuario(usr, pass) ? usuario : null;
+			if (usuario.validarUsuario(usr, pass))
+				user = usuario;
 		}
 
-		if (user.equals(new Usuario("pepe12", "123", false)))
-			throw new NonExistentUserException(usr);
+		if (user.getUsuario().equals("QWERTY123"))
+			throw new UserErrorException(usr);
 
 		return user;
 	}
