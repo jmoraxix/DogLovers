@@ -17,5 +17,9 @@ package dogLovers.control;
  *
  */
 public class Consultas {
-
+	
+	public void agregarMascota(){
+		
+	}
+	
 }

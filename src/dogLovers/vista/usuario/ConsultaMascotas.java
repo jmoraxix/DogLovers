@@ -18,6 +18,7 @@ import dogLovers.modelo.Persona;
 import dogLovers.vista.PanelBase;
 import dogLovers.vista.PanelMostrarMascotas;
 import dogLovers.vista.VentanaBase;
+import dogLovers.vista.VentanaConsulta;
 
 import java.awt.GridBagLayout;
 
@@ -28,6 +29,7 @@ import java.awt.Panel;
 import java.awt.Insets;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
@@ -44,7 +46,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author David
  *
  */
-public class ConsultaMascotas extends VentanaBase {
+public class ConsultaMascotas extends VentanaConsulta {
 	
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
@@ -54,60 +56,47 @@ public class ConsultaMascotas extends VentanaBase {
 	private Mascota nuevaM = new Mascota("Blacky", nuevaP, Mascota.EstadoMascota.Perdido);
 
 	public static void main(String[] args) {
-		ConsultaMascotas nueva = new ConsultaMascotas();
-		nueva.setVisible(true);
+		JFrame nuevo = new JFrame();
+		ConsultaMascotas nueva = new ConsultaMascotas(nuevo);
+		nueva.setVisible(true);		
 	}
 	
-	public ConsultaMascotas() {
-		PanelBase panelPrincipal = new PanelBase();
-		setContentPane(panelPrincipal);
-		panelPrincipal.setLayout(null);
+	public ConsultaMascotas(JFrame frame) {
+		super(frame, "Consulta Mascotas");
 		
-		panel = new PanelMostrarMascotas(this);
-		panel.setBounds(10, 69, 878, 323);
-		panelPrincipal.add(panel);
+		/**DATOS DE PRUEBA**/
+		nuevaP.setUbicacion("San Jose");
+		nuevaP.setNumTelefono("87474669");
+		nuevaP.setCorreo("david.diaz95@outlook.com");
 		
-		JLabel lblConsultaDeMascotas = new JLabel("Consulta de Mascotas");
-		lblConsultaDeMascotas.setBounds(10, 11, 117, 14);
-		panelPrincipal.add(lblConsultaDeMascotas);
+		nuevaM.setChipID("12340");
+		nuevaM.setColor("Negro");
+		nuevaM.setLugar("San JoseM");
+		java.util.Date fecha = new Date();
+		nuevaM.setFecha(fecha);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"-----Seleccione-----", "Lugar", "Chip", "Estado", "Raza", "Tipo", "Nombre", "En Adopcion"}));
-		comboBox.setBounds(10, 419, 283, 25);
-		panelPrincipal.add(comboBox);
-		
-		textField = new JTextField();
-		textField.setBounds(10, 455, 283, 25);
-		panelPrincipal.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				/**DATOS DE PRUEBA**/
-				nuevaP.setUbicacion("San Jose");
-				nuevaP.setNumTelefono("87474669");
-				nuevaP.setCorreo("david.diaz95@outlook.com");
-				
-				nuevaM.setChipID("12340");
-				nuevaM.setColor("Negro");
-				nuevaM.setLugar("San JoseM");
-				java.util.Date fecha = new Date();
-				nuevaM.setFecha(fecha);
-				
-				Principal.addMascota(nuevaM);
-				
 				llenarPanel(Principal.getMascotas());
+				
 			}
 		});
-		btnBuscar.setBounds(10, 491, 283, 25);
-		panelPrincipal.add(btnBuscar);
+		getLblConsulta().setText("Consulta Mascotas");
+
+		getCmbOpciones().setModel(new DefaultComboBoxModel(new String[] {"-----Seleccione-----",
+				"Nombre",
+				"ChipID",
+				"Raza",
+				"Tipo",
+				"Lugar",
+				"Estado",
+				"En Adopcion"}));
 	}
 	
 	public void llenarPanel(ArrayList<Mascota> mascotas){
 		panel = new PanelMostrarMascotas(this);
-
+		getScrollPanelConsulta().setViewportView(panel);
 		for(Mascota mascota : mascotas){
 			panel.agregarMascota(mascota);
 		}
