@@ -1,14 +1,6 @@
 /**
- * Primer Proyecto POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
- * 25/10/2014
+ * Primer Proyecto POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369 25/10/2014
  */
 
 package dogLovers.control;
@@ -21,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import dogLovers.control.exeptions.NonExistentUserException;
+import dogLovers.control.generar.GenerarDatos;
 import dogLovers.modelo.Asociacion;
 import dogLovers.modelo.CasaCuna;
 import dogLovers.modelo.Mascota;
@@ -43,9 +36,10 @@ public class Principal {
 
 	private static Usuario SESION_USUARIO;
 	private static int ancho = 1200, alto = 600;
-	
+
 	private static String nombreProyecto = "DogsLovers";
-	private static String ruta = System.getProperty("user.home") + "\\" + nombreProyecto;
+	private static String ruta = System.getProperty("user.home") + "\\"
+			+ nombreProyecto;
 
 	private static ArrayList<Asociacion> asociaciones = new ArrayList<Asociacion>();
 	private static ArrayList<CasaCuna> casasCuna = new ArrayList<CasaCuna>();
@@ -57,18 +51,17 @@ public class Principal {
 	// Declaración clase coordinador
 	private static Coordinador coordinador;
 
-
 	/**** DECLARACIÓN DE PANTALLAS ****/
 	private static Login login;
 	private static CrearUsuario creaUsuario;
 	private static MenuPrincipal_usuario menuPrincipal_usuario;
-	
+
 	public static void main(String[] args) {
 		System.gc();
-		
+
 		File directorio = new File(ruta);
 		directorio.mkdir();
-		
+
 		// LookAndFeel de la aplicacion
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		try {
@@ -78,7 +71,7 @@ public class Principal {
 		}
 
 		inicializarVentanas();
-		// GenerarDatos.generarDatos();
+		GenerarDatos.generarDatos();
 	}
 
 	/**** MÉTODOS ****/
@@ -99,18 +92,18 @@ public class Principal {
 		coordinador.setLogin(login);
 		coordinador.setMenuPrincipal_Usuario(menuPrincipal_usuario);
 		coordinador.setUsuario(creaUsuario);
-		
+
 		coordinador.mostrarLogin();
 	}
 
 	public static Usuario verificarSesion(String usr, String pass)
 			throws NonExistentUserException {
-		Usuario user = new Usuario("pepe12","123",false );
+		Usuario user = new Usuario("pepe12", "123", false);
 		for (Usuario usuario : usuarios) {
 			user = usuario.validarUsuario(usr, pass) ? usuario : null;
 		}
 
-		if (user.equals(new Usuario("pepe12","123",false )))
+		if (user.equals(new Usuario("pepe12", "123", false)))
 			throw new NonExistentUserException(usr);
 
 		return user;

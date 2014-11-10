@@ -25,7 +25,7 @@ public class Mascota {
 	private String lugar;
 	private Date fecha;
 	private boolean tieneRecompensa = false;
-	private Recompensa recompensa;
+	private Monto recompensa;
 	private ArrayList<String> notas = new ArrayList<String>();
 
 	// VARIABLES GLOBALES
@@ -109,11 +109,11 @@ public class Mascota {
 		return this.tieneRecompensa;
 	}
 
-	public Recompensa getRecompensa() {
+	public Monto getRecompensa() {
 		return this.recompensa;
 	}
 
-	public void setRecompensa(Recompensa recompensa) {
+	public void setRecompensa(Monto recompensa) {
 		this.tieneRecompensa = true;
 		this.recompensa = recompensa;
 	}
