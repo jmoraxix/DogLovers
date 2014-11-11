@@ -1,14 +1,6 @@
 /**
- * Proyecto Final POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
- * 01/11/2014
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369 01/11/2014
  */
 
 package dogLovers.vista;
@@ -50,20 +42,20 @@ public class PanelLista extends JPanel {
 	private void inicializarPanel() {
 		setLayout(new BorderLayout(0, 0));
 
-		panel = new PanelConFondo("fondo_lista.png");
-		panel.setLayout(new GridBagLayout());
+		this.panel = new PanelConFondo("fondo_lista.png");
+		this.panel.setLayout(new GridBagLayout());
 		GridBagConstraints valoresGrid = new GridBagConstraints();
 		valoresGrid.fill = GridBagConstraints.BOTH;
 		valoresGrid.weightx = 0.5;
 		valoresGrid.weighty = 1;
 
-		JScrollPane scrollPane = new JScrollPane(panel);
+		JScrollPane scrollPane = new JScrollPane(this.panel);
 		scrollPane.setOpaque(false);
 		add(scrollPane, BorderLayout.CENTER);
 	}
 
 	public void addRow(JPanel row) {
 		this.itemes.add(row);
-		panel.add(row, valoresGrid);
+		this.panel.add(row, this.valoresGrid);
 	}
 }
