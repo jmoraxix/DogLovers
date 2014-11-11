@@ -1,4 +1,4 @@
-package dogLovers.vista;
+package dogLovers.vista.usuario;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -15,6 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import dogLovers.control.Principal;
+import dogLovers.vista.PanelBase;
+import dogLovers.vista.PanelConFondo;
+import dogLovers.vista.PanelSlider;
+import dogLovers.vista.VentanaBase;
 
 public class CrearAsociacion extends VentanaBase {
 	private JLabel lblCorreoElectrnico;

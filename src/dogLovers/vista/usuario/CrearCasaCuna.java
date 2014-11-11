@@ -10,7 +10,7 @@
  * 2014079369
  * Nov 10, 2014
  */
-package dogLovers.vista;
+package dogLovers.vista.usuario;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -33,6 +33,10 @@ import dogLovers.control.Principal;
 import dogLovers.modelo.CaracteristicasMascota.RazaMascota;
 import dogLovers.modelo.CaracteristicasMascota.TamanoMascota;
 import dogLovers.modelo.CaracteristicasMascota.TipoMascota;
+import dogLovers.vista.PanelBase;
+import dogLovers.vista.PanelConFondo;
+import dogLovers.vista.PanelSlider;
+import dogLovers.vista.VentanaBase;
 
 /**
  * @author Diego Nov 10, 2014

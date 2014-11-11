@@ -1,4 +1,4 @@
-package dogLovers.vista;
+package dogLovers.vista.usuario;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -20,6 +20,10 @@ import dogLovers.modelo.CaracteristicasMascota.TamanoMascota;
 import dogLovers.modelo.CaracteristicasMascota.TipoMascota;
 import dogLovers.modelo.Fotografia;
 import dogLovers.modelo.Mascota.EstadoMascota;
+import dogLovers.vista.PanelBase;
+import dogLovers.vista.PanelConFondo;
+import dogLovers.vista.PanelSlider;
+import dogLovers.vista.VentanaBase;
 
 public class IngresarMascota extends VentanaBase {
 	/**

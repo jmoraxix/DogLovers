@@ -1,4 +1,4 @@
-package dogLovers.vista;
+package dogLovers.vista.usuario;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import dogLovers.vista.PanelBase;
+import dogLovers.vista.PanelConFondo;
+import dogLovers.vista.VentanaBase;
 
 public class MenuConsultas extends VentanaBase {
 	PanelConFondo panel;
