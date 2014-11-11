@@ -183,7 +183,7 @@ public class Login extends VentanaBase {
 						if (validaContrasena(
 								Login.this.txtConfirmarContrasena.getPassword(),
 								Login.this.txtContrasena.getPassword())) {
-							Usuario user = new Usuario(txtUsuario.getText(),
+							 Usuario user = new Usuario(txtUsuario.getText(),
 									Login.this.txtContrasena.getPassword()
 											.toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
@@ -319,10 +319,8 @@ public class Login extends VentanaBase {
 					String.valueOf(this.txtContrasea_1.getPassword()));
 			Principal.setSESION_USUARIO(sesion);
 			if (sesion.esAdministrador()) {
-				System.out.println("Admin");
-				limpiarDatos();
+
 			} else {
-				System.out.println("User");
 				Coordinador.mostrarMenuPrincipal_usuario();
 				Coordinador.ocultarLogin();
 				limpiarDatos();
@@ -339,8 +337,9 @@ public class Login extends VentanaBase {
 	public static boolean verificarUsuarioExistente(String usr) {
 		boolean existe = false;
 		for (Usuario usuario : Principal.getUsuarios()) {
-			if (usuario.getUsuario().equals(txtUsuario))
+			if (usuario.getUsuario().equals(txtUsuario.getText()))
 				existe = true;
+			System.out.println(usuario.getUsuario() + existe);
 		}
 		return existe;
 
