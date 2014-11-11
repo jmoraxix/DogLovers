@@ -1,14 +1,6 @@
 /**
- * Proyecto Final POO
- * Jose David Mora Loria
- * 2014004856
- * Diego Delgado Cerdas
- * 2013099268
- * David Diaz
- * 2014004725
- * Roger Villalobos
- * 2014079369
- * 25/10/2014
+ * Proyecto Final POO Jose David Mora Loria 2014004856 Diego Delgado Cerdas
+ * 2013099268 David Diaz 2014004725 Roger Villalobos 2014079369 25/10/2014
  */
 
 package dogLovers.vista;
@@ -58,16 +50,16 @@ public class PanelConFondo extends JPanel {
 		setOpaque(isOpaque);
 		setLayout(new BorderLayout(0, 0));
 
-		btn = new JButton(titulo);
-		btn.setOpaque(false);
-		btn.setContentAreaFilled(false);
-		btn.setBorderPainted(false);
-		btn.setFont(Principal.getLetratexto2());
-		add(btn, BorderLayout.SOUTH);
+		this.btn = new JButton(titulo);
+		this.btn.setOpaque(false);
+		this.btn.setContentAreaFilled(false);
+		this.btn.setBorderPainted(false);
+		this.btn.setFont(Principal.getLetratexto2());
+		add(this.btn, BorderLayout.CENTER);
 	}
 
 	public JButton getBtn() {
-		return btn;
+		return this.btn;
 	}
 
 	public void definirBorde(String url) {

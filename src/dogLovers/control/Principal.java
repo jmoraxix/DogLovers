@@ -21,8 +21,17 @@ import dogLovers.modelo.Persona;
 import dogLovers.modelo.Usuario;
 import dogLovers.vista.Login;
 import dogLovers.vista.usuario.ActualizarUsuario;
+import dogLovers.vista.usuario.ConsultaAsociaciones;
+import dogLovers.vista.usuario.ConsultaCasasCuna;
+import dogLovers.vista.usuario.ConsultaListaNegra;
+import dogLovers.vista.usuario.ConsultaMascotas;
+import dogLovers.vista.usuario.CrearAsociacion;
+import dogLovers.vista.usuario.CrearCasaCuna;
 import dogLovers.vista.usuario.CrearUsuario;
+import dogLovers.vista.usuario.IngresarMascota;
+import dogLovers.vista.usuario.MenuConsultas;
 import dogLovers.vista.usuario.MenuPrincipal_usuario;
+import dogLovers.vista.usuario.VentanaAsociacion;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -57,6 +66,15 @@ public class Principal {
 	private static CrearUsuario creaUsuario;
 	private static MenuPrincipal_usuario menuPrincipal_usuario;
 	private static ActualizarUsuario actualizarUsuario;
+	private static MenuConsultas menuConsultas;
+	private static ConsultaAsociaciones consultaAsociaciones;
+	private static ConsultaCasasCuna consultaCasasCuna;
+	private static ConsultaListaNegra consultaListaNegra;
+	private static ConsultaMascotas consultaMascotas;
+	private static CrearAsociacion crearAsociacion;
+	private static CrearCasaCuna crearCasaCuna;
+	private static VentanaAsociacion ventanaAsociacion;
+	private static IngresarMascota ingresarMascota;
 
 	public static void main(String[] args) {
 		System.gc();
@@ -88,6 +106,15 @@ public class Principal {
 		creaUsuario = new CrearUsuario();
 		menuPrincipal_usuario = new MenuPrincipal_usuario();
 		actualizarUsuario = new ActualizarUsuario();
+		menuConsultas = new MenuConsultas();
+		consultaAsociaciones = new ConsultaAsociaciones();
+		consultaCasasCuna = new ConsultaCasasCuna();
+		consultaListaNegra = new ConsultaListaNegra();
+		consultaMascotas = new ConsultaMascotas();
+		crearAsociacion = new CrearAsociacion();
+		crearCasaCuna = new CrearCasaCuna();
+		ventanaAsociacion = new VentanaAsociacion();
+		ingresarMascota = new IngresarMascota();
 		// Coordinador
 		coordinador = Coordinador.getINSTANCE();
 
@@ -96,6 +123,17 @@ public class Principal {
 		coordinador.setMenuPrincipal_Usuario(menuPrincipal_usuario);
 		coordinador.setUsuario(creaUsuario);
 		coordinador.setActualizarUsuario(actualizarUsuario);
+		coordinador.setActualizarUsuario(actualizarUsuario);
+		coordinador.setMenuConsultas(menuConsultas);
+		coordinador.setConsultaAsociaciones(consultaAsociaciones);
+		coordinador.setConsultaCasasCuna(consultaCasasCuna);
+		coordinador.setConsultaListaNegra(consultaListaNegra);
+		coordinador.setConsultaMascotas(consultaMascotas);
+		coordinador.setCrearAsociacion(crearAsociacion);
+		coordinador.setCrearCasaCuna(crearCasaCuna);
+		coordinador.setVentanaAsociacion(ventanaAsociacion);
+		coordinador.setIngresarMascota(ingresarMascota);
+
 		coordinador.mostrarLogin();
 	}
 

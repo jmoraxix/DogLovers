@@ -8,12 +8,15 @@ package dogLovers.vista.usuario;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dogLovers.control.Coordinador;
 import dogLovers.control.Principal;
 import dogLovers.modelo.Fotografia;
 import dogLovers.vista.BarraMenu;
@@ -90,6 +93,14 @@ public class MenuPrincipal_usuario extends JFrame {
 
 		this.btn_IngMascota = new PanelConFondo("agregar_mascota.png", false,
 				"");
+		this.btn_IngMascota.getBtn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Coordinador.mostrarIngresarMascota();
+				Coordinador.ocultarMenuPrincipal_usuario();
+			}
+		});
 		GridBagConstraints gbc_btn_IngMascota = new GridBagConstraints();
 		gbc_btn_IngMascota.fill = GridBagConstraints.BOTH;
 		gbc_btn_IngMascota.insets = new Insets(0, 0, 5, 5);
@@ -98,6 +109,14 @@ public class MenuPrincipal_usuario extends JFrame {
 		this.panelContenido.add(this.btn_IngMascota, gbc_btn_IngMascota);
 
 		this.btn_MisMascotas = new PanelConFondo("huella.png", false, "");
+		this.btn_MisMascotas.getBtn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Coordinador.mostrarActualizarUsuario();
+				Coordinador.ocultarMenuPrincipal_usuario();
+			}
+		});
 		GridBagConstraints gbc_btn_MisMascotas = new GridBagConstraints();
 		gbc_btn_MisMascotas.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_MisMascotas.fill = GridBagConstraints.BOTH;
@@ -133,6 +152,15 @@ public class MenuPrincipal_usuario extends JFrame {
 		this.panelContenido.add(this.lblMisMascotas, gbc_lblMisMascotas);
 
 		this.btn_ActualizarDatos = new PanelConFondo("usuario.png", false, "");
+		this.btn_ActualizarDatos.getBtn().addActionListener(
+				new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						Coordinador.mostrarActualizarUsuario();
+						Coordinador.ocultarMenuPrincipal_usuario();
+					}
+				});
 		GridBagConstraints gbc_btn_ActualizarDatos = new GridBagConstraints();
 		gbc_btn_ActualizarDatos.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_ActualizarDatos.fill = GridBagConstraints.BOTH;
@@ -142,6 +170,14 @@ public class MenuPrincipal_usuario extends JFrame {
 				gbc_btn_ActualizarDatos);
 
 		this.btn_Consultas = new PanelConFondo("ver.png", false, "");
+		this.btn_Consultas.getBtn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Coordinador.mostrarMenuConsultas();
+				Coordinador.ocultarMenuPrincipal_usuario();
+			}
+		});
 		GridBagConstraints gbc_btn_Consultas = new GridBagConstraints();
 		gbc_btn_Consultas.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_Consultas.fill = GridBagConstraints.BOTH;
@@ -167,6 +203,14 @@ public class MenuPrincipal_usuario extends JFrame {
 		this.panelContenido.add(this.lblConsultas, gbc_lblConsultas);
 
 		this.btn_CasaCuna = new PanelConFondo("casacuna.png", false, "");
+		this.btn_CasaCuna.getBtn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// Coordinador.mos();
+				// Coordinador.ocultarMenuPrincipal_usuario();
+			}
+		});
 		GridBagConstraints gbc_btn_CasaCuna = new GridBagConstraints();
 		gbc_btn_CasaCuna.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_CasaCuna.fill = GridBagConstraints.BOTH;
@@ -175,6 +219,14 @@ public class MenuPrincipal_usuario extends JFrame {
 		this.panelContenido.add(this.btn_CasaCuna, gbc_btn_CasaCuna);
 
 		this.btn_Adopciones = new PanelConFondo("adoptar.png", false, "");
+		this.btn_Adopciones.getBtn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Coordinador.mostrarVentanaAsociacion();
+				Coordinador.ocultarMenuPrincipal_usuario();
+			}
+		});
 		GridBagConstraints gbc_btn_Adopciones = new GridBagConstraints();
 		gbc_btn_Adopciones.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_Adopciones.fill = GridBagConstraints.BOTH;
