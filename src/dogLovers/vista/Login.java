@@ -183,7 +183,7 @@ public class Login extends VentanaBase {
 						if (validaContrasena(
 								Login.this.txtConfirmarContrasena.getPassword(),
 								Login.this.txtContrasena.getPassword())) {
-							 Usuario user = new Usuario(txtUsuario.getText(),
+							Usuario user = new Usuario(txtUsuario.getText(),
 									Login.this.txtContrasena.getPassword()
 											.toString(), false);
 							Coordinador.mostrarCrearUsuario(user);
@@ -319,7 +319,10 @@ public class Login extends VentanaBase {
 					String.valueOf(this.txtContrasea_1.getPassword()));
 			Principal.setSESION_USUARIO(sesion);
 			if (sesion.esAdministrador()) {
-
+				Coordinador.modoAdministrador();
+				Coordinador.mostrarMenuPrincipal_usuario();
+				Coordinador.ocultarLogin();
+				limpiarDatos();
 			} else {
 				Coordinador.mostrarMenuPrincipal_usuario();
 				Coordinador.ocultarLogin();
@@ -360,14 +363,14 @@ public class Login extends VentanaBase {
 		}
 		return valor;
 	}
-	
-	public void limpiarDatos(){
+
+	public void limpiarDatos() {
 		txtUsuario.setText("");
-		txtContrasena.setText("");
-		txtConfirmarContrasena.setText("");
-		txtUsuario_1.setText("");
-		txtContrasea_1.setText("");
-		
+		this.txtContrasena.setText("");
+		this.txtConfirmarContrasena.setText("");
+		this.txtUsuario_1.setText("");
+		this.txtContrasea_1.setText("");
+
 	}
 
 }

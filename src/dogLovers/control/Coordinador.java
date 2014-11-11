@@ -7,8 +7,16 @@ package dogLovers.control;
 
 import dogLovers.modelo.Usuario;
 import dogLovers.vista.Login;
+import dogLovers.vista.usuario.ConsultaAsociaciones;
+import dogLovers.vista.usuario.ConsultaCasasCuna;
+import dogLovers.vista.usuario.ConsultaListaNegra;
+import dogLovers.vista.usuario.ConsultaMascotas;
+import dogLovers.vista.usuario.CrearAsociacion;
+import dogLovers.vista.usuario.CrearCasaCuna;
 import dogLovers.vista.usuario.CrearUsuario;
+import dogLovers.vista.usuario.MenuConsultas;
 import dogLovers.vista.usuario.MenuPrincipal_usuario;
+import dogLovers.vista.usuario.VentanaAsociacion;
 
 /**
  * @author JoséDavid 25/10/2014
@@ -27,9 +35,16 @@ public class Coordinador {
 	private static Login login;
 	private static CrearUsuario crearUsuario;
 	private static MenuPrincipal_usuario menuPrincipal_usuario;
+	private static MenuConsultas menuConsultas;
+	private static ConsultaAsociaciones consultaAsociaciones;
+	private static ConsultaCasasCuna consultaCasasCuna;
+	private static ConsultaListaNegra consultaListaNegra;
+	private static ConsultaMascotas consultaMascotas;
+	private static CrearAsociacion crearAsociacion;
+	private static CrearCasaCuna crearCasaCuna;
+	private static VentanaAsociacion ventanaAsociacion;
 
 	/**** GETTERS AND SETTERS ***/
-
 	public static Login getLogin() {
 		return login;
 	}
@@ -53,6 +68,89 @@ public class Coordinador {
 	public static void setMenuPrincipal_Usuario(
 			MenuPrincipal_usuario menuPrincipal_Usuario) {
 		Coordinador.menuPrincipal_usuario = menuPrincipal_Usuario;
+	}
+
+	public static CrearUsuario getCrearUsuario() {
+		return crearUsuario;
+	}
+
+	public static void setCrearUsuario(CrearUsuario crearUsuario) {
+		Coordinador.crearUsuario = crearUsuario;
+	}
+
+	public static MenuPrincipal_usuario getMenuPrincipal_usuario() {
+		return menuPrincipal_usuario;
+	}
+
+	public static void setMenuPrincipal_usuario(
+			MenuPrincipal_usuario menuPrincipal_usuario) {
+		Coordinador.menuPrincipal_usuario = menuPrincipal_usuario;
+	}
+
+	public static MenuConsultas getMenuConsultas() {
+		return menuConsultas;
+	}
+
+	public static void setMenuConsultas(MenuConsultas menuConsultas) {
+		Coordinador.menuConsultas = menuConsultas;
+	}
+
+	public static ConsultaAsociaciones getConsultaAsociaciones() {
+		return consultaAsociaciones;
+	}
+
+	public static void setConsultaAsociaciones(
+			ConsultaAsociaciones consultaAsociaciones) {
+		Coordinador.consultaAsociaciones = consultaAsociaciones;
+	}
+
+	public static ConsultaCasasCuna getConsultaCasasCuna() {
+		return consultaCasasCuna;
+	}
+
+	public static void setConsultaCasasCuna(ConsultaCasasCuna consultaCasasCuna) {
+		Coordinador.consultaCasasCuna = consultaCasasCuna;
+	}
+
+	public static ConsultaListaNegra getConsultaListaNegra() {
+		return consultaListaNegra;
+	}
+
+	public static void setConsultaListaNegra(
+			ConsultaListaNegra consultaListaNegra) {
+		Coordinador.consultaListaNegra = consultaListaNegra;
+	}
+
+	public static ConsultaMascotas getConsultaMascotas() {
+		return consultaMascotas;
+	}
+
+	public static void setConsultaMascotas(ConsultaMascotas consultaMascotas) {
+		Coordinador.consultaMascotas = consultaMascotas;
+	}
+
+	public static CrearAsociacion getCrearAsociacion() {
+		return crearAsociacion;
+	}
+
+	public static void setCrearAsociacion(CrearAsociacion crearAsociacion) {
+		Coordinador.crearAsociacion = crearAsociacion;
+	}
+
+	public static CrearCasaCuna getCrearCasaCuna() {
+		return crearCasaCuna;
+	}
+
+	public static void setCrearCasaCuna(CrearCasaCuna crearCasaCuna) {
+		Coordinador.crearCasaCuna = crearCasaCuna;
+	}
+
+	public static VentanaAsociacion getVentanaAsociacion() {
+		return ventanaAsociacion;
+	}
+
+	public static void setVentanaAsociacion(VentanaAsociacion ventanaAsociacion) {
+		Coordinador.ventanaAsociacion = ventanaAsociacion;
 	}
 
 	/** MOSTRAR VENTANAS **/
@@ -80,5 +178,10 @@ public class Coordinador {
 
 	public static void ocultarMenuPrincipal_usuario() {
 		menuPrincipal_usuario.setVisible(false);
+	}
+
+	/** MÉTODOS **/
+	public static void modoAdministrador() {
+		menuPrincipal_usuario.inicializarBarraMenu(true);
 	}
 }

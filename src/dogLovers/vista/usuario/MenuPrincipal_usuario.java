@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import dogLovers.control.Principal;
 import dogLovers.modelo.Fotografia;
+import dogLovers.vista.BarraMenu;
 import dogLovers.vista.PanelBase;
 import dogLovers.vista.PanelConFondo;
 import dogLovers.vista.PanelLista;
@@ -87,7 +88,8 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_lblMenPrincipal.gridy = 0;
 		this.panelContenido.add(this.lblMenPrincipal, gbc_lblMenPrincipal);
 
-		this.btn_IngMascota = new PanelConFondo("agregar_mascota.png", false);
+		this.btn_IngMascota = new PanelConFondo("agregar_mascota.png", false,
+				"");
 		GridBagConstraints gbc_btn_IngMascota = new GridBagConstraints();
 		gbc_btn_IngMascota.fill = GridBagConstraints.BOTH;
 		gbc_btn_IngMascota.insets = new Insets(0, 0, 5, 5);
@@ -95,7 +97,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_btn_IngMascota.gridy = 2;
 		this.panelContenido.add(this.btn_IngMascota, gbc_btn_IngMascota);
 
-		this.btn_MisMascotas = new PanelConFondo("huella.png", false);
+		this.btn_MisMascotas = new PanelConFondo("huella.png", false, "");
 		GridBagConstraints gbc_btn_MisMascotas = new GridBagConstraints();
 		gbc_btn_MisMascotas.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_MisMascotas.fill = GridBagConstraints.BOTH;
@@ -130,7 +132,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_lblMisMascotas.gridy = 3;
 		this.panelContenido.add(this.lblMisMascotas, gbc_lblMisMascotas);
 
-		this.btn_ActualizarDatos = new PanelConFondo("usuario.png", false);
+		this.btn_ActualizarDatos = new PanelConFondo("usuario.png", false, "");
 		GridBagConstraints gbc_btn_ActualizarDatos = new GridBagConstraints();
 		gbc_btn_ActualizarDatos.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_ActualizarDatos.fill = GridBagConstraints.BOTH;
@@ -139,7 +141,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		this.panelContenido.add(this.btn_ActualizarDatos,
 				gbc_btn_ActualizarDatos);
 
-		this.btn_Consultas = new PanelConFondo("ver.png", false);
+		this.btn_Consultas = new PanelConFondo("ver.png", false, "");
 		GridBagConstraints gbc_btn_Consultas = new GridBagConstraints();
 		gbc_btn_Consultas.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_Consultas.fill = GridBagConstraints.BOTH;
@@ -164,7 +166,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_lblConsultas.gridy = 5;
 		this.panelContenido.add(this.lblConsultas, gbc_lblConsultas);
 
-		this.btn_CasaCuna = new PanelConFondo("casacuna.png", false);
+		this.btn_CasaCuna = new PanelConFondo("casacuna.png", false, "");
 		GridBagConstraints gbc_btn_CasaCuna = new GridBagConstraints();
 		gbc_btn_CasaCuna.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_CasaCuna.fill = GridBagConstraints.BOTH;
@@ -172,7 +174,7 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_btn_CasaCuna.gridy = 6;
 		this.panelContenido.add(this.btn_CasaCuna, gbc_btn_CasaCuna);
 
-		this.btn_Adopciones = new PanelConFondo("adoptar.png", false);
+		this.btn_Adopciones = new PanelConFondo("adoptar.png", false, "");
 		GridBagConstraints gbc_btn_Adopciones = new GridBagConstraints();
 		gbc_btn_Adopciones.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_Adopciones.fill = GridBagConstraints.BOTH;
@@ -196,6 +198,11 @@ public class MenuPrincipal_usuario extends JFrame {
 		gbc_lblAdopciones.gridy = 7;
 		this.panelContenido.add(this.lblAdopciones, gbc_lblAdopciones);
 	}
-	/**** MÉTODOS ****/
+
+	public void inicializarBarraMenu(boolean esAdmin) {
+		// Se declara la barra de menú si el usuario es administrador
+		if (esAdmin)
+			this.setJMenuBar(new BarraMenu());
+	}
 
 }
