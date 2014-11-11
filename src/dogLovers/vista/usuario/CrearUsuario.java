@@ -267,7 +267,8 @@ public class CrearUsuario extends VentanaBase {
 							usuario.setDatos(persona);
 							Principal.addUsuario(usuario);
 							Principal.addPersona(persona);
-							Coordinador.mostrarLogin();
+							Principal.setSESION_USUARIO(usuario);
+							Coordinador.mostrarMenuPrincipal_usuario();
 							Coordinador.ocultarCrearUsuario();
 							limpiarDatos();
 							}	
