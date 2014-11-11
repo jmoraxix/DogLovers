@@ -135,7 +135,6 @@ public class ActualizarUsuario extends VentanaBase {
 		txtCedula.setColumns(10);
 
 		lblUsuario = new JLabel("Usuario: *");
-		txtUsuario.setText(Principal.getSESION_USUARIO().getUsuario());
 		lblUsuario.setFont(Principal.getLetratexto3());
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
 		gbc_lblUsuario.anchor = GridBagConstraints.WEST;
