@@ -30,7 +30,7 @@ public class Mascota {
 
 	// VARIABLES GLOBALES
 	public static enum EstadoMascota {
-		Seleccione, Perdido, Encontrado, En_Adopcion, Propio
+		Seleccione, Perdido, Encontrado, En_Adopcion, Adoptado, Propio
 	}
 
 	/**** CONSTRUCTOR ****/
