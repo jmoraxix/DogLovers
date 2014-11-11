@@ -20,6 +20,7 @@ import dogLovers.modelo.Mascota;
 import dogLovers.modelo.Persona;
 import dogLovers.modelo.Usuario;
 import dogLovers.vista.Login;
+import dogLovers.vista.usuario.ActualizarUsuario;
 import dogLovers.vista.usuario.CrearUsuario;
 import dogLovers.vista.usuario.MenuPrincipal_usuario;
 
@@ -55,6 +56,7 @@ public class Principal {
 	private static Login login;
 	private static CrearUsuario creaUsuario;
 	private static MenuPrincipal_usuario menuPrincipal_usuario;
+	private static ActualizarUsuario actualizarUsuario;
 
 	public static void main(String[] args) {
 		System.gc();
@@ -85,6 +87,7 @@ public class Principal {
 		login = new Login();
 		creaUsuario = new CrearUsuario();
 		menuPrincipal_usuario = new MenuPrincipal_usuario();
+		actualizarUsuario = new ActualizarUsuario();
 		// Coordinador
 		coordinador = Coordinador.getINSTANCE();
 
@@ -92,7 +95,7 @@ public class Principal {
 		coordinador.setLogin(login);
 		coordinador.setMenuPrincipal_Usuario(menuPrincipal_usuario);
 		coordinador.setUsuario(creaUsuario);
-
+		coordinador.setActualizarUsuario(actualizarUsuario);
 		coordinador.mostrarLogin();
 	}
 

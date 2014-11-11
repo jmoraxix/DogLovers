@@ -7,6 +7,7 @@ package dogLovers.control;
 
 import dogLovers.modelo.Usuario;
 import dogLovers.vista.Login;
+import dogLovers.vista.usuario.ActualizarUsuario;
 import dogLovers.vista.usuario.ConsultaAsociaciones;
 import dogLovers.vista.usuario.ConsultaCasasCuna;
 import dogLovers.vista.usuario.ConsultaListaNegra;
@@ -34,6 +35,7 @@ public class Coordinador {
 	/**** DECLARACIÓN DE PANTALLAS ****/
 	private static Login login;
 	private static CrearUsuario crearUsuario;
+	
 	private static MenuPrincipal_usuario menuPrincipal_usuario;
 	private static MenuConsultas menuConsultas;
 	private static ConsultaAsociaciones consultaAsociaciones;
@@ -43,6 +45,7 @@ public class Coordinador {
 	private static CrearAsociacion crearAsociacion;
 	private static CrearCasaCuna crearCasaCuna;
 	private static VentanaAsociacion ventanaAsociacion;
+	private static ActualizarUsuario actualizarUsuario;
 
 	/**** GETTERS AND SETTERS ***/
 	public static Login getLogin() {
@@ -153,6 +156,14 @@ public class Coordinador {
 		Coordinador.ventanaAsociacion = ventanaAsociacion;
 	}
 
+	public static ActualizarUsuario getActualizarUsuario() {
+		return actualizarUsuario;
+	}
+
+	public static void setActualizarUsuario(ActualizarUsuario actualizarUsuario) {
+		Coordinador.actualizarUsuario = actualizarUsuario;
+	}
+
 	/** MOSTRAR VENTANAS **/
 	public static void mostrarLogin() {
 		login.setVisible(true);
@@ -165,6 +176,10 @@ public class Coordinador {
 
 	public static void mostrarMenuPrincipal_usuario() {
 		menuPrincipal_usuario.setVisible(true);
+	}
+	
+	public static void mostrarActualizarUsuario(){
+		actualizarUsuario.setVisible(true);
 	}
 
 	/** OCULTAR VENTANAS **/
@@ -179,7 +194,12 @@ public class Coordinador {
 	public static void ocultarMenuPrincipal_usuario() {
 		menuPrincipal_usuario.setVisible(false);
 	}
-
+	
+	public static void ocultarActualizarUsuario(){
+		actualizarUsuario.setVisible(false);
+	}
+	
+		
 	/** MÉTODOS **/
 	public static void modoAdministrador() {
 		menuPrincipal_usuario.inicializarBarraMenu(true);
